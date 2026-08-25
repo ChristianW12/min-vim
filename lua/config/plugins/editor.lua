@@ -1,0 +1,33 @@
+-- lua/config/plugins/editor.lua
+-- Kleinere Editor-Plugins: surround, todo-comments, autopairs, autotags, undotree
+
+-- Nvim-Surround
+require("nvim-surround").setup({})
+
+-- Todo-Comments
+require("todo-comments").setup({})
+
+-- Autopairs (ohne nvim-cmp Integration, da wir natives Completion nutzen)
+require("nvim-autopairs").setup({
+    check_ts = true,
+})
+
+-- Autotags
+require("nvim-ts-autotag").setup({
+    opts = {
+        enable_close = true,
+        enable_rename = true,
+        enable_close_on_slash = false,
+    },
+    per_filetype = {},
+})
+
+-- Undotree
+vim.g.undotree_WindowLayout = 2
+vim.g.undotree_SplitWidth = 40
+vim.g.undotree_DiffpanelHeight = 12
+vim.g.undotree_DiffAutoOpen = 1
+vim.g.undotree_SetFocusWhenToggle = 1
+vim.g.undotree_ShortIndicators = 1
+vim.g.undotree_HelpLine = 1
+vim.g.undotree_UndoDir = vim.o.undodir
