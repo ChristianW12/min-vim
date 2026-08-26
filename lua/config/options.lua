@@ -95,7 +95,7 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- =========================
 -- Built-in Statusline (ersetzt lualine.nvim)
 -- =========================
-opt.statusline = " %f %h%m%r %= %{&filetype} │ %l:%c │ %P "
+opt.statusline = " %f %h%m%r %= %{FugitiveHead() ==# '' ? '' : ' ' . FugitiveHead()} │ %{&filetype} │ %l:%c │ %P "
 
 -- =========================
 -- Netrw Konfiguration (ersetzt neo-tree)
