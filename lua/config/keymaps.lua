@@ -234,6 +234,7 @@ map("n", "<leader>uf", "<cmd>UndotreeFocus<CR>", { desc = "Undo Tree Focus" })
 -- Markdown Preview
 -- =========================
 map("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true, desc = "Preview of current file in Browser" })
+map("n", "<leader>mps", ":MarkdownPreviewStop<CR>", { noremap = true, silent = true, desc = "Stop Markdown Preview" })
 
 -- =========================
 -- Obsidian Keymaps (Global triggers)
