@@ -11,6 +11,21 @@ require("neo-tree").setup({
     },
     window = {
         width = 30,
+        mappings = {
+            ["/"] = "none",
+            ["O"] = "open_with_system_app",
+        },
+    },
+    commands = {
+        open_with_system_app = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            if vim.ui.open then
+                vim.ui.open(path)
+            else
+                vim.fn.jobstart({ "explorer.exe", path }, { detach = true })
+            end
+        end,
     },
 })
 
