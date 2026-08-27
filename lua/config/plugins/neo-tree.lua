@@ -1,3 +1,6 @@
+local activeOnEnter = true
+-- local activeOnEnter = false
+
 require("neo-tree").setup({
     close_if_last_window = true,
     filesystem = {
@@ -13,7 +16,7 @@ require("neo-tree").setup({
 
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
-        if vim.fn.argc() == 0 then
+        if activeOnEnter and vim.fn.argc() == 0 then
             vim.cmd("Neotree filesystem reveal float")
         end
     end,
