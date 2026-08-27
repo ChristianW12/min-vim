@@ -17,8 +17,10 @@ vim.pack.add({
     -- Kern-Abhängigkeiten
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/MunifTanjim/nui.nvim",
     -- Navigation & Suche
     "https://github.com/nvim-telescope/telescope.nvim",
+    "https://github.com/nvim-neo-tree/neo-tree.nvim",
     -- Treesitter
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",

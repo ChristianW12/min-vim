@@ -57,11 +57,25 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected lines down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected lines up" })
 
 -- =========================
--- Explorer (Netrw, ersetzt Neo-tree)
+-- Explorer 
 -- =========================
-map("n", "<leader>e", ":Lexplore<CR>", { desc = "Toggle Explorer", silent = true })
-map("n", "<leader>fe", ":Lexplore<CR>", { desc = "Focus Explorer", silent = true })
-map("n", "<leader>E", ":Lexplore<CR>", { desc = "Toggle file explorer", silent = true })
+-- map("n", "<leader>e", ":Lexplore<CR>", { desc = "Toggle Explorer", silent = true })
+-- map("n", "<leader>fe", ":Lexplore<CR>", { desc = "Focus Explorer", silent = true })
+-- map("n", "<leader>E", ":Lexplore<CR>", { desc = "Toggle file explorer", silent = true })
+map("n", "<leader>e", "<cmd>Neotree toggle filesystem reveal left<CR>", {
+    desc = "Toggle Explorer",
+    silent = true,
+})
+
+map("n", "<leader>fe", "<cmd>Neotree focus filesystem left<CR>", {
+    desc = "Focus Explorer",
+    silent = true,
+})
+
+map("n", "<leader>E", "<cmd>Neotree filesystem reveal float<CR>", {
+    desc = "Floating Explorer",
+    silent = true,
+})
 
 -- =========================
 -- Telescope Keymaps (ehemals in lazy keys={})
