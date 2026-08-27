@@ -21,6 +21,7 @@ vim.pack.add({
     -- Navigation & Suche
     "https://github.com/nvim-telescope/telescope.nvim",
     "https://github.com/nvim-neo-tree/neo-tree.nvim",
+    "https://github.com/ahmedkhalf/project.nvim",
     -- Treesitter
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
