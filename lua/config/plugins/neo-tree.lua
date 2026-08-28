@@ -10,7 +10,7 @@ require("neo-tree").setup({
         use_libuv_file_watcher = true,
     },
     window = {
-        width = 30,
+        width = 40,
         mappings = {
             ["/"] = "none",
             ["O"] = "open_with_system_app",
