@@ -21,12 +21,12 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
 
 -- Wrap-aware Bewegung
-map("n", "j", function()
-    return vim.v.count == 0 and "gj" or "j"
-end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
-map("n", "k", function()
-    return vim.v.count == 0 and "gk" or "k"
-end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
+-- map("n", "j", function()
+--     return vim.v.count == 0 and "gj" or "j"
+-- end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
+-- map("n", "k", function()
+--     return vim.v.count == 0 and "gk" or "k"
+-- end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
 -- Horizontales Scrollen
 map("n", "+", "10zlzz", { desc = "Scroll right and center cursor" })
