@@ -132,6 +132,10 @@
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
     },
+    "vim-moonfly-colors": {
+      "rev": "261664f92ed51cf0c077555b2d4b2530307eac17",
+      "src": "https://github.com/bluz71/vim-moonfly-colors"
+    },
     "vimtex": {
       "rev": "c1b96604d9a387cde5a98bec8f6687ae3078b571",
       "src": "https://github.com/lervag/vimtex"

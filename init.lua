@@ -62,6 +62,7 @@ vim.pack.add({
     -- Theme
     "https://github.com/navarasu/onedark.nvim",
     "https://github.com/mofiqul/vscode.nvim",
+    "https://github.com/bluz71/vim-moonfly-colors",
 })
 
 -- 3. KONFIGURATION LADEN
