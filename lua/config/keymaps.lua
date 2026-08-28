@@ -247,6 +247,7 @@ map("v", "<leader>on", "<cmd>ObsidianNewFromLink<cr>", { desc = "Obsidian: Creat
 map("n", "<leader>od", "<cmd>ObsidianToday<cr>", { desc = "Obsidian: Today (daily note)" })
 map("n", "<leader>ot", "<cmd>ObsidianTags<cr>", { desc = "Obsidian: Search tags" })
 map("n", "<leader>ob", "<cmd>ObsidianBacklinks<cr>", { desc = "Obsidian: Show backlinks" })
+map("n", "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Obsidian: Open vault" })
 
 -- =========================
 -- Terminal Mappings
