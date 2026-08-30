@@ -11,6 +11,20 @@ if vim.fn.has("win32") == 1 then
     vim.env.CC = "gcc"
 end
 
+-- LIBUV FIX: Behebt `vim/fs:837: assertion failed!`, wenn libuv das Arbeitsverzeichnis nicht auflösen kann
+local original_uv_cwd = vim.uv.cwd
+vim.uv.cwd = function()
+    local cwd = original_uv_cwd()
+    if not cwd then
+        if vim.in_fast_event() then
+            return os.getenv("HOME") or "/"
+        end
+        cwd = vim.fn.getcwd()
+        if cwd == "" then cwd = vim.fn.expand("~") end
+    end
+    return cwd
+end
+
 -- 2. NATIVES PLUGIN-MANAGEMENT
 -- Neue Plugins einfach als weiteren Eintrag in vim.pack.add() ergänzen.
 vim.pack.add({

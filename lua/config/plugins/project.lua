@@ -286,6 +286,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
             return
         end
 
+        -- Prevent vim/fs:837 assertion failed when CWD is invalid/deleted
+        if not vim.uv.cwd() and not vim.startswith(bufname, "/") and not bufname:match("^%w:[\\/]") then
+            return
+        end
+
         local root = vim.fs.root(args.buf, root_markers)
         if root then
             M.add_project(root)

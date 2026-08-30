@@ -1,16 +1,45 @@
 -- lua/config/plugins/writing.lua
 -- Writing-Plugins: obsidian, markdown-preview, vimtex
 
--- Obsidian
+local function get_obsidian_vault()
+    local cwd = vim.uv.cwd()
+    if not cwd then return nil end
+    local vault_root = vim.fs.root(cwd, ".obsidian")
+    if vault_root then return vault_root end
+    return nil
+end
+
+local vault_path = get_obsidian_vault()
+local workspaces = {}
+
+if vault_path then
+    table.insert(workspaces, {
+        name = "vault",
+        path = vault_path,
+    })
+else
+    table.insert(workspaces, {
+        name = "no-vault",
+        path = function()
+            local cwd = vim.uv.cwd()
+            if not cwd then return vim.fn.expand("~") end
+            local buf_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+            if buf_dir == nil or buf_dir == "" or buf_dir == "." then
+                return cwd
+            end
+            return buf_dir
+        end,
+        overrides = {
+            notes_subdir = vim.NIL,
+            new_notes_location = "current_dir",
+            templates = { folder = vim.NIL },
+            disable_frontmatter = true,
+        }
+    })
+end
+
 require("obsidian").setup({
-    workspaces = {
-        {
-            name = "vault",
-            path = function()
-                return vim.fn.getcwd()
-            end,
-        },
-    },
+    workspaces = workspaces,
     completion = {
         nvim_cmp = false,
         min_chars = 2,
