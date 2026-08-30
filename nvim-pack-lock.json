@@ -44,6 +44,14 @@
       "rev": "c3c69715da4b158069fd4262083e7219a5c14cfb",
       "src": "https://github.com/marilari88/neotest-vitest"
     },
+    "neovim-project": {
+      "rev": "f4e9b3392dc46b6e615b629a40ea4fa47cc2a203",
+      "src": "https://github.com/coffebar/neovim-project"
+    },
+    "neovim-session-manager": {
+      "rev": "89d253a6c68af60b49570044591d5b8701866601",
+      "src": "https://github.com/Shatur/neovim-session-manager"
+    },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
@@ -110,7 +118,7 @@
     },
     "project.nvim": {
       "rev": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb",
-      "src": "https://github.com/ahmedkhalf/project.nvim"
+      "src": "https://github.com/ChristianW12/project.nvim"
     },
     "telescope-bibtex.nvim": {
       "rev": "289a6f86ebec06e8ae1590533b732b9981d84900",

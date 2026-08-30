@@ -42,10 +42,6 @@ vim.api.nvim_create_autocmd("User", {
     end,
 })
 
--- Project Extension
-pcall(function()
-    require("telescope").load_extension("projects")
-end)
 
 -- BibTeX Extension
 pcall(function()
