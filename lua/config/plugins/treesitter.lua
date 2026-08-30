@@ -25,16 +25,6 @@ require("nvim-treesitter").setup({
 -- Treesitter Textobjects
 local map = vim.keymap.set
 
--- Incremental Selection
-map("n", "<C-space>", function()
-    require("nvim-treesitter.incremental_selection").init_selection()
-end, { desc = "TS: Start incremental selection" })
-map("x", "<C-space>", function()
-    require("nvim-treesitter.incremental_selection").node_incremental()
-end, { desc = "TS: Expand selection" })
-map("x", "<bs>", function()
-    require("nvim-treesitter.incremental_selection").node_decremental()
-end, { desc = "TS: Shrink selection" })
 
 -- Textobjects: af/if = function, ac/ic = class, ab/ib = block
 local sel = require("nvim-treesitter-textobjects.select")
