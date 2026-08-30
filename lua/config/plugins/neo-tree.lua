@@ -1,5 +1,5 @@
-local activeOnEnter = true
--- local activeOnEnter = false
+-- local activeOnEnter = true
+local activeOnEnter = false
 
 require("neo-tree").setup({
     close_if_last_window = true,
