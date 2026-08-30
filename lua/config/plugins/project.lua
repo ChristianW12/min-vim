@@ -14,6 +14,9 @@ local scan_patterns = {
     "~/workspace/*",
     "~/dev/*",
     "~/code/*",
+    "~/Coding/*",
+    "**/Notizen/*",
+    "**/Notes/*",
 }
 
 -- Projekt-Marker zur Root-Erkennung
