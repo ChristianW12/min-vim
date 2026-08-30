@@ -11,17 +11,29 @@ if vim.fn.has("win32") == 1 then
     vim.env.CC = "gcc"
 end
 
--- LIBUV FIX: Behebt `vim/fs:837: assertion failed!`, wenn libuv das Arbeitsverzeichnis nicht auflösen kann
+-- LIBUV / FLATPAK FIX: Wenn Neovim in einem FUSE-Mount (z.B. xdg-document-portal wie /run/user/...) startet,
+-- schlägt die CWD-Erkennung oft fehl und gibt "" zurück. Das verursacht Abstürze in `vim.fs` und Neo-tree.
+-- Wir überladen getcwd() global, um das Arbeitsverzeichnis aus der Shell-Umgebungsvariable zu holen.
+local pwd = os.getenv("PWD") or vim.fn.expand("~")
+
 local original_uv_cwd = vim.uv.cwd
 vim.uv.cwd = function()
     local cwd = original_uv_cwd()
-    if not cwd then
-        if vim.in_fast_event() then
-            return os.getenv("HOME") or "/"
-        end
-        cwd = vim.fn.getcwd()
-        if cwd == "" then cwd = vim.fn.expand("~") end
+    if not cwd or cwd == "" then return pwd end
+    return cwd
+end
+
+local original_fn_getcwd = vim.fn.getcwd
+vim.fn.getcwd = function(winnr, tabnr)
+    local cwd
+    if winnr and tabnr then
+        cwd = original_fn_getcwd(winnr, tabnr)
+    elseif winnr then
+        cwd = original_fn_getcwd(winnr)
+    else
+        cwd = original_fn_getcwd()
     end
+    if not cwd or cwd == "" then return pwd end
     return cwd
 end
 
