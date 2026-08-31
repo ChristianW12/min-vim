@@ -68,7 +68,7 @@ opt.mouse = "a"
 -- =========================
 -- Clipboard
 -- =========================
-opt.clipboard = "unnamedplus"
+opt.clipboard:append("unnamedplus") 
 
 -- =========================
 -- Folding (Treesitter-basiert, ersetzt UFO)
