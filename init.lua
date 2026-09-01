@@ -85,9 +85,10 @@ vim.pack.add({
     "https://github.com/marilari88/neotest-vitest",
     "https://github.com/rcasia/neotest-java",
     -- Theme
-    "https://github.com/navarasu/onedark.nvim",
-    "https://github.com/mofiqul/vscode.nvim",
-    "https://github.com/bluz71/vim-moonfly-colors",
+"https://github.com/harshrajsachan/omni.nvim",
+   -- "https://github.com/navarasu/onedark.nvim",
+  --  "https://github.com/mofiqul/vscode.nvim",
+    -- "https://github.com/bluz71/vim-moonfly-colors",
 })
 
 -- 3. KONFIGURATION LADEN
