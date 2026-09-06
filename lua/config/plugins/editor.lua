@@ -38,3 +38,6 @@ treesj.setup({
     use_default_keymaps = false,
 })
 vim.keymap.set("n", "<leader>m", treesj.toggle, { desc = "Toggle Split/Join" })
+
+-- Hlslens
+require("hlslens").setup({})

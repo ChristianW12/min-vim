@@ -63,6 +63,7 @@ vim.pack.add({
     "https://github.com/folke/which-key.nvim",
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/Wansmer/treesj",
+    "https://github.com/kevinhwang91/nvim-hlslens",
     -- AI
     "https://github.com/github/copilot.vim",
     -- Writing
