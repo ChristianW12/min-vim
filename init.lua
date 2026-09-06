@@ -62,6 +62,7 @@ vim.pack.add({
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/which-key.nvim",
     "https://github.com/lukas-reineke/indent-blankline.nvim",
+    "https://github.com/Wansmer/treesj",
     -- AI
     "https://github.com/github/copilot.vim",
     -- Writing

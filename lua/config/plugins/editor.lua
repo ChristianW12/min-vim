@@ -31,3 +31,10 @@ vim.g.undotree_SetFocusWhenToggle = 1
 vim.g.undotree_ShortIndicators = 1
 vim.g.undotree_HelpLine = 1
 vim.g.undotree_UndoDir = vim.o.undodir
+
+-- TreesJ
+local treesj = require("treesj")
+treesj.setup({
+    use_default_keymaps = false,
+})
+vim.keymap.set("n", "<leader>m", treesj.toggle, { desc = "Toggle Split/Join" })
