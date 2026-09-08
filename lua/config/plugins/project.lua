@@ -1,12 +1,12 @@
 -- lua/config/plugins/project.lua
--- Leichtgewichtiger Projekt-Dateipicker ohne Verzeichniswechsel (cwd bleibt unverändert)
+-- Lightweight project file picker without changing directories (cwd remains unchanged)
 
 local M = {}
 
--- Speicherort für die Projekthistorie
+-- Project history location
 local history_file = vim.fs.joinpath(vim.fn.stdpath("data"), "project_picker_history.json")
 
--- Suchmuster für automatische Erkennung
+-- Search patterns for automatic discovery
 local scan_patterns = {
     "~/projects/*",
     "~/.config/*",
@@ -19,7 +19,7 @@ local scan_patterns = {
     "**/Notes/*",
 }
 
--- Projekt-Marker zur Root-Erkennung
+-- Project markers for root detection
 local root_markers = {
     ".git",
     "package.json",
@@ -31,7 +31,7 @@ local root_markers = {
     ".root",
 }
 
---- Lädt die gespeicherte Projekthistorie
+--- Load the saved project history
 ---@return string[]
 local function load_history()
     local uv = vim.uv or vim.loop
@@ -58,7 +58,7 @@ local function load_history()
     return {}
 end
 
---- Speichert die Projekthistorie in die JSON-Datei
+--- Save the project history to the JSON file
 ---@param projects string[]
 local function save_history(projects)
     local file = io.open(history_file, "w")
@@ -72,14 +72,14 @@ local function save_history(projects)
     file:close()
 end
 
---- Fügt ein Projekt an den Anfang der Historie an (MRU)
+--- Add a project to the beginning of the history (MRU)
 ---@param path string
 function M.add_project(path)
     if not path or path == "" then
         return
     end
 
-    -- Pfad normalisieren
+    -- Normalize path
     local normalized = vim.fs.normalize(path)
     local uv = vim.uv or vim.loop
     local stat = uv.fs_stat(normalized)
@@ -102,7 +102,7 @@ function M.add_project(path)
     save_history(new_history)
 end
 
---- Entfernt ein Projekt aus der Historie
+--- Remove a project from the history
 ---@param path string
 function M.remove_project(path)
     local normalized = vim.fs.normalize(path)
@@ -118,7 +118,7 @@ function M.remove_project(path)
     save_history(new_history)
 end
 
---- Scannt vorkonfigurierte Pfade nach Projekten
+--- Scan preconfigured paths for projects
 ---@return string[]
 local function discover_projects()
     local uv = vim.uv or vim.loop
@@ -132,7 +132,7 @@ local function discover_projects()
             local norm = vim.fs.normalize(match)
             local stat = uv.fs_stat(norm)
             if stat and stat.type == "directory" and not seen[norm] then
-                -- Prüfen, ob es sich um ein Projekt handelt (Marker vorhanden)
+                -- Check whether this is a project (marker present)
                 local is_project = false
                 for _, marker in ipairs(root_markers) do
                     local marker_path = vim.fs.joinpath(norm, marker)
@@ -153,7 +153,7 @@ local function discover_projects()
     return discovered
 end
 
---- Liefert alle eindeutigen Projekte (Historie zuerst, dann Discovery)
+--- Return all unique projects (history first, then discovery)
 ---@return string[]
 local function get_all_projects()
     local uv = vim.uv or vim.loop
@@ -179,11 +179,11 @@ local function get_all_projects()
     return result
 end
 
---- Öffnet den Telescope Projekt-Picker
+--- Open the Telescope project picker
 function M.open_picker()
     local has_telescope, _ = pcall(require, "telescope")
     if not has_telescope then
-        vim.notify("Telescope ist nicht geladen!", vim.log.levels.ERROR)
+        vim.notify("Telescope is not loaded!", vim.log.levels.ERROR)
         return
     end
 
@@ -197,7 +197,7 @@ function M.open_picker()
 
     local projects = get_all_projects()
     if #projects == 0 then
-        vim.notify("Keine Projekte gefunden. Öffne zuerst eine Datei in einem Projekt.", vim.log.levels.INFO)
+        vim.notify("No projects found. Open a file in a project first.", vim.log.levels.INFO)
         return
     end
 
@@ -223,7 +223,7 @@ function M.open_picker()
     end
 
     pickers.new({}, {
-        prompt_title = "📁 Projekte (Dateisuche ohne chdir)",
+        prompt_title = "📁 Projects (file search without chdir)",
         finder = finders.new_table({
             results = projects,
             entry_maker = function(path)
@@ -238,7 +238,7 @@ function M.open_picker()
         }),
         sorter = conf.generic_sorter({}),
         attach_mappings = function(prompt_bufnr, map)
-            -- ENTER: Dateien aus gewähltem Projekt suchen (cwd bleibt unverändert!)
+            -- ENTER: Find files in the selected project (cwd remains unchanged!)
             actions.select_default:replace(function()
                 local selection = action_state.get_selected_entry()
                 actions.close(prompt_bufnr)
@@ -249,14 +249,14 @@ function M.open_picker()
                 M.add_project(selection.value)
 
                 builtin.find_files({
-                    prompt_title = "Dateien in " .. selection.name,
+                    prompt_title = "Files in " .. selection.name,
                     cwd = selection.value,
                     hidden = true,
                 })
             end)
 
 
-            -- Ctrl + d: Projekt aus Historie entfernen
+            -- Ctrl + d: Remove project from history
             map({ "i", "n" }, "<C-d>", function()
                 local selection = action_state.get_selected_entry()
                 if selection then
@@ -272,7 +272,7 @@ function M.open_picker()
 end
 
 -- ============================================================================
--- Autocommands zur automatischen Erfassung von Projekten
+-- Autocommands for automatic project tracking
 -- ============================================================================
 local project_group = vim.api.nvim_create_augroup("ProjectPickerAutoTrack", { clear = true })
 
@@ -301,7 +301,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
---- Fügt das aktuelle Arbeitsverzeichnis manuell zur Historie hinzu
+--- Add the current working directory to the history manually
 function M.add_current_dir()
     local cwd = vim.fs.normalize(vim.fn.getcwd())
     local history = load_history()
@@ -315,12 +315,12 @@ function M.add_current_dir()
     end
 
     if exists then
-        vim.notify("Verzeichnis ist bereits in der Projektliste: " .. cwd, vim.log.levels.INFO)
+        vim.notify("Directory is already in the project list: " .. cwd, vim.log.levels.INFO)
         return
     end
 
     M.add_project(cwd)
-    vim.notify("Projekt hinzugefügt: " .. cwd, vim.log.levels.INFO)
+    vim.notify("Project added: " .. cwd, vim.log.levels.INFO)
 end
 
 -- ============================================================================
@@ -328,14 +328,14 @@ end
 -- ============================================================================
 vim.api.nvim_create_user_command("ProjectFiles", function()
     M.open_picker()
-end, { desc = "Projekt-Dateipicker (ohne chdir)" })
+end, { desc = "Project file picker (without chdir)" })
 
 vim.api.nvim_create_user_command("ProjectAddCurrent", function()
     M.add_current_dir()
-end, { desc = "Aktuelles Verzeichnis als Projekt hinzufügen" })
+end, { desc = "Add current directory as a project" })
 
 vim.keymap.set("n", "<leader>fp", M.open_picker, {
-    desc = "Find Project Files (ohne chdir)",
+    desc = "Find Project Files (without chdir)",
     silent = true,
 })
 

@@ -1,8 +1,8 @@
 -- init.lua
--- Minimale Neovim-Konfiguration ohne lazy.nvim
--- Nutzt vim.pack.add() und natives LSP
+-- Minimal Neovim configuration without lazy.nvim
+-- Uses vim.pack.add() and native LSP
 
--- 1. LEADER KEYS (müssen ganz oben stehen, bevor Plugins geladen werden)
+-- 1. LEADER KEYS (must be defined before plugins are loaded)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -11,9 +11,9 @@ if vim.fn.has("win32") == 1 then
     vim.env.CC = "gcc"
 end
 
--- LIBUV / FLATPAK FIX: Wenn Neovim in einem FUSE-Mount (z.B. xdg-document-portal wie /run/user/...) startet,
--- schlägt die CWD-Erkennung oft fehl und gibt "" zurück. Das verursacht Abstürze in `vim.fs` und Neo-tree.
--- Wir überladen getcwd() global, um das Arbeitsverzeichnis aus der Shell-Umgebungsvariable zu holen.
+-- LIBUV / FLATPAK FIX: When Neovim starts in a FUSE mount (e.g. xdg-document-portal under /run/user/...),
+-- CWD detection often fails and returns "". This causes crashes in `vim.fs` and Neo-tree.
+-- Override getcwd() globally to get the working directory from the shell environment variable.
 local pwd = os.getenv("PWD") or vim.fn.expand("~")
 
 local original_uv_cwd = vim.uv.cwd
@@ -38,13 +38,13 @@ vim.fn.getcwd = function(winnr, tabnr)
 end
 
 -- 2. NATIVES PLUGIN-MANAGEMENT
--- Neue Plugins einfach als weiteren Eintrag in vim.pack.add() ergänzen.
+-- Add new plugins as additional entries in vim.pack.add().
 vim.pack.add({
-    -- Kern-Abhängigkeiten
+    -- Core dependencies
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
     "https://github.com/MunifTanjim/nui.nvim",
-    -- Navigation & Suche
+    -- Navigation & Search
     "https://github.com/nvim-telescope/telescope.nvim",
     "https://github.com/nvim-neo-tree/neo-tree.nvim",
     -- Treesitter
@@ -70,7 +70,7 @@ vim.pack.add({
     "https://github.com/epwalsh/obsidian.nvim",
     "https://github.com/iamcco/markdown-preview.nvim",
     "https://github.com/nvim-telescope/telescope-bibtex.nvim",
-    -- Sprach-spezifisch
+    -- Language-specific
     "https://github.com/lervag/vimtex",
     "https://github.com/mfussenegger/nvim-jdtls",
     -- Formatter & Linter
@@ -93,11 +93,11 @@ vim.pack.add({
     "https://github.com/bluz71/vim-moonfly-colors",
 })
 
--- 3. KONFIGURATION LADEN
+-- 3. LOAD CONFIGURATION
 require("config.options")
 require("config.keymaps")
 require("config.lsp")
--- 4. PLUGIN-KONFIGURATIONEN LADEN (alle Dateien in lua/config/plugins/)
+-- 4. LOAD PLUGIN CONFIGURATIONS (all files in lua/config/plugins/)
 local plugin_conf_dir = vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "config", "plugins")
 for _, file in ipairs(vim.fn.readdir(plugin_conf_dir)) do
     if file:match("%.lua$") then

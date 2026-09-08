@@ -1,5 +1,5 @@
 -- lua/config/plugins/dap.lua
--- Debugging und Testing: nvim-dap, neotest
+-- Debugging and testing: nvim-dap, neotest
 
 -- DAP (Debugging)
 local dap = require("dap")

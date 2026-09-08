@@ -1,6 +1,6 @@
 -- lua/config/keymaps.lua
--- Alle Keymaps aus der alten Config 1:1 übernommen
--- Plugin-Keymaps (ehemals in lazy.nvim keys={}) sind hier zentral zusammengeführt
+-- All keymaps copied from the old config
+-- Plugin keymaps (formerly in lazy.nvim keys={}) are centralized here
 local map = vim.keymap.set
 
 -- =========================
@@ -16,7 +16,7 @@ map("n", "<leader>X", ":bd!<CR>", { desc = "Force close buffer", silent = true }
 map("n", "<leader>sh", ":split<CR>", { desc = "Horizontal Split" })
 map("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical Split" })
 
--- Scrollen mit Zentrierung
+-- Scroll and center cursor
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
 
@@ -28,38 +28,38 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
 --     return vim.v.count == 0 and "gk" or "k"
 -- end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
--- Horizontales Scrollen
+-- Horizontal scrolling
 map("n", "+", "10zlzz", { desc = "Scroll right and center cursor" })
 map("n", "ü", "10zhzz", { desc = "Scroll left and center cursor" })
 
--- Suche
+-- Search
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Remove search highlight", silent = true })
 
--- Dateien speichern/schließen
+-- Save/close files
 map("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
 map("n", "<leader>W", ":wa<CR>", { desc = "Save all files", silent = true })
 map("n", "<leader>q", ":confirm q<CR>", { desc = "Quit Neovim", silent = true })
 map("n", "<leader>Q", ":qall!<CR>", { desc = "Force quit Neovim", silent = true })
 
--- Colorscheme in Clipboard kopieren
+-- Copy colorscheme to clipboard
 map("n", "<leader>cth", function()
     local name = vim.g.colors_name or vim.cmd("colorscheme")
     vim.fn.setreg("+", name)
     print("Theme '" .. name .. "' copied to clipboard!")
 end, { desc = "Copy current colorscheme name to clipboard" })
 
--- Zeilen verschieben (Normal Mode)
+-- Move lines (Normal mode)
 map("n", "<A-j>", ":m .+1<CR>==", { desc = "line down" })
 map("n", "<A-k>", ":m .-2<CR>==", { desc = "line up" })
 
--- Zeilen verschieben (Visual Mode)
+-- Move lines (Visual mode)
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected lines down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected lines up" })
 
 -- =========================
 -- Completion (LSP / Omni-Completion)
 -- =========================
--- Ctrl + Space triggert die Code-Vervollständigung im Insert-Modus
+-- Ctrl + Space triggers code completion in Insert mode
 map("i", "<C-Space>", "<C-x><C-o>", { desc = "Trigger LSP Completion", silent = true })
 map("i", "<C-@>", "<C-x><C-o>", { desc = "Trigger LSP Completion (Terminal Fallback)", silent = true })
 
@@ -76,7 +76,7 @@ map("n", "<leader>fe", "<cmd>Neotree focus filesystem left<CR>", { desc = "Focus
 map("n", "<leader>E", "<cmd>Neotree filesystem reveal float<CR>", { desc = "Floating Explorer", silent = true, })
 
 -- =========================
--- Telescope Keymaps (ehemals in lazy keys={})
+-- Telescope keymaps (formerly in lazy keys={})
 -- =========================
 map("n", "ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
 map("n", "fg", "<cmd>Telescope live_grep<cr>", { desc = "Search Text (Grep)" })
@@ -84,7 +84,7 @@ map("n", "fb", "<cmd>Telescope buffers<cr>", { desc = "Search Open Buffers" })
 map("n", "fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Neovim Help" })
 map("n", "fr", "<cmd>Telescope lsp_references<cr>", { desc = "Search LSP References" })
 
--- Config-Dateien suchen (Cross-Platform)
+-- Find config files (cross-platform)
 map("n", "<leader>fc", function()
     require("telescope.builtin").find_files({
         search_dirs = {
@@ -102,7 +102,7 @@ map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Git Files" })
 map("n", "<leader>ghc", "<cmd>Telescope git_commits<cr>", { desc = "Git Commits" })
 map("n", "<leader>ghB", "<cmd>Telescope git_branches<cr>", { desc = "Git Branches" })
 
--- Datei extern öffnen (Cross-Platform)
+-- Open file externally (cross-platform)
 map("n", "<leader>oe", function()
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
@@ -130,10 +130,10 @@ map("n", "<leader>oe", function()
     })
 end, { desc = "Search and Open File Externally" })
 
--- Outline ersetzt durch Telescope LSP Symbols
+-- Outline replaced by Telescope LSP symbols
 map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Document Symbols (Outline)" })
 
--- Buffer-Auswahl (ersetzt Bufferline Keymaps)
+-- Buffer selection (replaces Bufferline keymaps)
 map("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Select buffer" })
 map("n", "<leader>bc", ":bd<CR>", { desc = "Close buffer", silent = true })
 
@@ -179,7 +179,7 @@ map("n", "<leader>mc", function()
 end, { desc = "Insert Mail Contacts" })
 
 -- =========================
--- Fugitive Keymaps (ehemals in lazy keys={})
+-- Fugitive keymaps (formerly in lazy keys={})
 -- =========================
 map("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git Status" })
 map("n", "<leader>gc", "<cmd>Git commit<cr>", { desc = "Git Commit" })
@@ -226,7 +226,7 @@ map("n", "<leader>uf", "<cmd>UndotreeFocus<CR>", { desc = "Undo Tree Focus" })
 -- =========================
 -- Copilot Keymaps
 -- =========================
--- (werden in config/plugins.lua gesetzt nach dem Plugin-Setup)
+-- (set in config/plugins.lua after plugin setup)
 
 -- =========================
 -- Markdown Preview
@@ -301,7 +301,7 @@ vim.api.nvim_create_user_command("GradleTest", function()
     vim.cmd("split | terminal gradle test")
 end, { desc = "Java: Run Gradle tests" })
 
--- PowerShell Start-Script (Cross-Platform: nur auf Windows relevant)
+-- PowerShell start script (cross-platform: relevant only on Windows)
 local function project_root_from_git()
     local current_file = vim.api.nvim_buf_get_name(0)
     local start_path = current_file ~= "" and vim.fs.dirname(current_file) or vim.fn.getcwd()
@@ -318,7 +318,7 @@ map("n", "<leader>sp", function()
     local uv = vim.uv or vim.loop
 
     if not uv.fs_stat(script_path) then
-        print("start-script.ps1 nicht gefunden: " .. script_path)
+        print("start-script.ps1 not found: " .. script_path)
         return
     end
 
@@ -333,6 +333,6 @@ map("n", "<leader>sp", function()
     })
 
     if job_id <= 0 then
-        print("Konnte start-script.ps1 nicht starten.")
+        print("Could not start start-script.ps1.")
     end
 end, { desc = "Run start-script.ps1 from git root" })

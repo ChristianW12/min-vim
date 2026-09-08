@@ -7,7 +7,7 @@ require("nvim-surround").setup({})
 -- Todo-Comments
 require("todo-comments").setup({})
 
--- Autopairs (ohne nvim-cmp Integration, da wir natives Completion nutzen)
+-- Autopairs (without nvim-cmp integration because native completion is used)
 require("nvim-autopairs").setup({
     check_ts = true,
 })
