@@ -108,6 +108,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- =========================
 -- Alle LSP-Server die im PATH verfügbar sein müssen
 local servers = {
+    gopls = {
+        cmd = { get_cmd("gopls") },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_markers = { "go.work", "go.mod", ".git" },
+    },
     lua_ls = {
         cmd = { get_cmd("lua-language-server") },
         filetypes = { "lua" },
