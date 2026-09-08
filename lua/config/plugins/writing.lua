@@ -71,7 +71,7 @@ require("obsidian").setup({
     },
 })
 
--- Markdown Shortcuts (Buffer-lokal für Markdown)
+-- Markdown shortcuts (buffer-local for Markdown)
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Markdown Preview
 vim.g.mkdp_auto_start = 0
 
--- VimTeX (nur für PA/PA2/BA Ordner)
+-- VimTeX (only for PA/PA2/BA folders)
 local folder = vim.fs.basename(vim.fn.getcwd())
 if folder == "PA" or folder == "PA2" or folder == "BA" then
     if vim.fn.has("win32") == 1 then

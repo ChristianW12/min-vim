@@ -1,11 +1,11 @@
 -- lua/config/options.lua
--- Allgemeine Neovim-Einstellungen (1:1 aus der alten Config übernommen, cross-platform bereinigt)
+-- General Neovim settings (copied from the old config and cleaned up for cross-platform use)
 local opt = vim.opt
 
 -- =========================
 -- Colorscheme
 -- =========================
-vim.cmd.colorscheme("moonfly") -- Colorscheme setzen
+vim.cmd.colorscheme("moonfly") -- Set colorscheme
 
 -- =========================
 -- Basics / UI
@@ -17,22 +17,22 @@ opt.cursorline = true
 opt.wrap = true
 opt.linebreak = true
 opt.breakindent = true
-opt.conceallevel = 2 -- Obsidian UI (Checkboxes, Links) anzeigen
+opt.conceallevel = 2 -- Show Obsidian UI (checkboxes, links)
 opt.inccommand = "split"
 opt.cmdheight = 0
 opt.termguicolors = true
 
--- Kontext beim Scrollen beibehalten
+-- Preserve context while scrolling
 opt.scroll = 5
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
--- Splits: neue Fenster dort wo man sie erwartet
+-- Splits: open new windows where expected
 opt.splitright = true
 opt.splitbelow = true
 
 -- =========================
--- Einrückung
+-- Indentation
 -- =========================
 opt.expandtab = true
 opt.tabstop = 4
@@ -40,16 +40,16 @@ opt.shiftwidth = 4
 opt.smartindent = true
 
 -- =========================
--- Suche
+-- Search
 -- =========================
 opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = true
 opt.incsearch = true
-opt.path:append("**") -- Projektübergreifende Suche mit :find
+opt.path:append("**") -- Search across projects with :find
 
 -- =========================
--- Dateien / Undo / Backup (Cross-Platform)
+-- Files / Undo / Backup (cross-platform)
 -- =========================
 opt.undofile = true
 local undodir = vim.fs.joinpath(vim.fn.expand("~"), ".vim", "undodir")
@@ -61,7 +61,7 @@ opt.writebackup = false
 opt.autoread = true
 
 -- =========================
--- Performance / Verhalten
+-- Performance / Behavior
 -- =========================
 opt.updatetime = 300
 opt.timeoutlen = 400
@@ -73,12 +73,12 @@ opt.mouse = "a"
 opt.clipboard:append("unnamedplus") 
 
 -- =========================
--- Folding (Treesitter-basiert, ersetzt UFO)
+-- Folding (Treesitter-based, replaces UFO)
 -- =========================
 opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
-opt.foldenable = false -- Folds beim Öffnen nicht einklappen
+opt.foldenable = false -- Do not fold when opening
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
@@ -96,19 +96,19 @@ opt.fillchars = {
 opt.completeopt = { "menu", "menuone", "noselect", "fuzzy" }
 
 -- =========================
--- Built-in Statusline (ersetzt lualine.nvim)
+-- Built-in statusline (replaces lualine.nvim)
 -- =========================
 opt.statusline = " %f %h%m%r %= %{FugitiveHead() ==# '' ? '' : ' ' . FugitiveHead()} │ %{&filetype} │ %l:%c │ %P "
 
 -- =========================
--- Netrw Konfiguration (ersetzt neo-tree)
+-- Netrw configuration (replaces neo-tree)
 -- =========================
-vim.g.netrw_liststyle = 3 -- Baumansicht
-vim.g.netrw_banner = 0   -- Hilfe-Banner ausblenden
-vim.g.netrw_winsize = 25  -- Fensterbreite für Lexplore (25%)
+vim.g.netrw_liststyle = 3 -- Tree view
+vim.g.netrw_banner = 0   -- Hide help banner
+vim.g.netrw_winsize = 25  -- Window width for Lexplore (25%)
 
 -- =========================
--- Windows Terminal / Shell Konfiguration
+-- Windows terminal / shell configuration
 -- =========================
 if vim.fn.has("win32") == 1 then
     local powershell_options = {

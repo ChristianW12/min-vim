@@ -1,5 +1,5 @@
 -- lua/config/plugins/formatting.lua
--- Formatter und Linter: conform, nvim-lint
+-- Formatter and linter: conform, nvim-lint
 
 -- Conform (Formatter)
 require("conform").setup({

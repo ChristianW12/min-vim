@@ -7,7 +7,7 @@ require("nvim-surround").setup({})
 -- Todo-Comments
 require("todo-comments").setup({})
 
--- Autopairs (ohne nvim-cmp Integration, da wir natives Completion nutzen)
+-- Autopairs (without nvim-cmp integration because native completion is used)
 require("nvim-autopairs").setup({
     check_ts = true,
 })
@@ -37,7 +37,7 @@ local treesj = require("treesj")
 treesj.setup({
     use_default_keymaps = false,
 })
-vim.keymap.set("n", "<leader>m", treesj.toggle, { desc = "Toggle Split/Join" })
+vim.keymap.set("n", "<leader>mt", treesj.toggle, { desc = "Toggle Split/Join" })
 
 -- Hlslens
 require("hlslens").setup({})

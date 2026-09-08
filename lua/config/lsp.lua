@@ -1,11 +1,11 @@
 -- lua/config/lsp.lua
--- Natives LSP-Setup ohne mason.nvim und nvim-lspconfig
--- Nutzt vim.lsp.config() und vim.lsp.enable() (Neovim 0.11+)
+-- Native LSP setup without mason.nvim and nvim-lspconfig
+-- Uses vim.lsp.config() and vim.lsp.enable() (Neovim 0.11+)
 
 local is_win = vim.fn.has("win32") == 1
 local sep = is_win and "\\" or "/"
 
--- Hilfsfunktion: Auf Windows brauchen npm-installierte Tools oft .cmd
+-- Helper: npm-installed tools often need .cmd on Windows
 local function get_cmd(name)
     if is_win and vim.fn.executable(name) ~= 1 and vim.fn.executable(name .. ".cmd") == 1 then
         return name .. ".cmd"
@@ -32,7 +32,7 @@ local function save_state(file, enabled)
 end
 
 -- =========================
--- Diagnostics Konfiguration
+-- Diagnostics configuration
 -- =========================
 vim.diagnostic.config({
     virtual_text = {
@@ -47,7 +47,7 @@ vim.diagnostic.config({
 vim.diagnostic.enable(load_state(diagnostics_state_file))
 
 -- =========================
--- LSP Keymaps und Features (bei LspAttach)
+-- LSP keymaps and features (on LspAttach)
 -- =========================
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-        -- Symbol-Highlighting unter dem Cursor
+        -- Highlight symbols under the cursor
         if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = ev.buf,
@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end, { desc = "Toggle Inlay Hints", buffer = ev.buf })
         end
 
-        -- Native Autocompletion aktivieren (ersetzt nvim-cmp)
+        -- Enable native autocompletion (replaces nvim-cmp)
         if client and client:supports_method("textDocument/completion") then
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
         end
@@ -104,9 +104,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- =========================
--- Sprachen-Konfiguration
+-- Language configuration
 -- =========================
--- Alle LSP-Server die im PATH verfügbar sein müssen
+-- LSP servers that must be available in PATH
 local servers = {
     gopls = {
         cmd = { get_cmd("gopls") },
@@ -195,7 +195,7 @@ local servers = {
     },
 }
 
--- PowerShell Editor Services (nur auf Windows sinnvoll)
+-- PowerShell Editor Services (useful only on Windows)
 if is_win then
     servers.powershell_es = {
         cmd = { get_cmd("powershell-editor-services") },
@@ -204,9 +204,9 @@ if is_win then
     }
 end
 
--- Server registrieren und aktivieren
+-- Register and enable servers
 for name, config in pairs(servers) do
-    -- Nur aktivieren wenn das Executable im PATH gefunden wird
+    -- Enable only when the executable is found in PATH
     local cmd_name = config.cmd and config.cmd[1] or name
     if vim.fn.executable(cmd_name) == 1 then
         vim.lsp.config(name, config)
