@@ -93,7 +93,7 @@ opt.fillchars = {
 -- =========================
 -- Completion
 -- =========================
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone", "noselect", "fuzzy" }
 
 -- =========================
 -- Built-in Statusline (ersetzt lualine.nvim)
