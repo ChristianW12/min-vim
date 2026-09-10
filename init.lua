@@ -68,6 +68,7 @@ vim.pack.add({
     "https://github.com/github/copilot.vim",
     -- Writing
     "https://github.com/epwalsh/obsidian.nvim",
+    "https://github.com/MeanderingProgrammer/render-markdown.nvim",
     "https://github.com/iamcco/markdown-preview.nvim",
     "https://github.com/nvim-telescope/telescope-bibtex.nvim",
     -- Language-specific
