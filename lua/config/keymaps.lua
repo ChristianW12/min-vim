@@ -311,28 +311,3 @@ local function project_root_from_git()
     end
     return vim.fn.getcwd()
 end
-
-map("n", "<leader>sp", function()
-    local root = project_root_from_git()
-    local script_path = vim.fs.joinpath(root, "start-script.ps1")
-    local uv = vim.uv or vim.loop
-
-    if not uv.fs_stat(script_path) then
-        print("start-script.ps1 not found: " .. script_path)
-        return
-    end
-
-    local job_id = vim.fn.jobstart({
-        "powershell.exe",
-        "-NoProfile",
-        "-ExecutionPolicy", "Bypass",
-        "-File", script_path,
-    }, {
-        cwd = root,
-        detach = true,
-    })
-
-    if job_id <= 0 then
-        print("Could not start start-script.ps1.")
-    end
-end, { desc = "Run start-script.ps1 from git root" })
