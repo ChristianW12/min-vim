@@ -19,7 +19,6 @@ opt.linebreak = true
 opt.breakindent = true
 opt.conceallevel = 2 -- Show Obsidian UI (checkboxes, links)
 opt.inccommand = "split"
-opt.cmdheight = 0
 opt.termguicolors = true
 
 -- Preserve context while scrolling
