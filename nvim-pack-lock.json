@@ -36,6 +36,10 @@
       "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
+    "md-table.nvim": {
+      "rev": "fd1529b4cea88894f5efff0616df849ccec15098",
+      "src": "https://github.com/freeo/md-table.nvim"
+    },
     "neo-tree.nvim": {
       "rev": "5e076e5419b95b13c29383e1de29270a50df2d40",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"

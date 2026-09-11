@@ -41,3 +41,7 @@ vim.keymap.set("n", "<leader>mt", treesj.toggle, { desc = "Toggle Split/Join" })
 
 -- Hlslens
 require("hlslens").setup({})
+
+-- md-table.nvim
+require("md-table")
+vim.keymap.set("n", "<leader>tmt", "<cmd>MdTable<cr>" , { desc = "Toggle Markdown Table" })

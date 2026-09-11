@@ -56,12 +56,6 @@ map("n", "<A-k>", ":m .-2<CR>==", { desc = "line up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected lines down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected lines up" })
 
--- =========================
--- Completion (LSP / Omni-Completion)
--- =========================
--- Ctrl + Space triggers code completion in Insert mode
-map("i", "<C-Space>", "<C-x><C-o>", { desc = "Trigger LSP Completion", silent = true })
-map("i", "<C-@>", "<C-x><C-o>", { desc = "Trigger LSP Completion (Terminal Fallback)", silent = true })
 
 -- =========================
 -- Explorer 

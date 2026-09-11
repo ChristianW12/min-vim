@@ -64,6 +64,7 @@ vim.pack.add({
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/Wansmer/treesj",
     "https://github.com/kevinhwang91/nvim-hlslens",
+    "https://github.com/freeo/md-table.nvim",
     -- AI
     "https://github.com/github/copilot.vim",
     -- Writing
