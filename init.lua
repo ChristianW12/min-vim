@@ -87,6 +87,9 @@ vim.pack.add({
     "https://github.com/antoinemadec/FixCursorHold.nvim",
     "https://github.com/marilari88/neotest-vitest",
     "https://github.com/rcasia/neotest-java",
+    -- Completion
+    "https://github.com/saghen/blink.lib",
+    "https://github.com/saghen/blink.cmp",
     -- Theme
     "https://github.com/harshrajsachan/omni.nvim",
     "https://github.com/navarasu/onedark.nvim",

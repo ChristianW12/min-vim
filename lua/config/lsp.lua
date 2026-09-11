@@ -96,10 +96,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end, { desc = "Toggle Inlay Hints", buffer = ev.buf })
         end
 
-        -- Enable native autocompletion (replaces nvim-cmp)
-        if client and client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        end
+
 
         -- Go: Automatische Imports und Formatierung beim Speichern
         if client and client.name == "gopls" then
@@ -225,11 +222,20 @@ if is_win then
     }
 end
 
+-- Capabilities für blink.cmp abrufen
+local has_blink, blink = pcall(require, "blink.cmp")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+if has_blink then
+    capabilities = blink.get_lsp_capabilities(capabilities)
+end
+
 -- Register and enable servers
 for name, config in pairs(servers) do
     -- Enable only when the executable is found in PATH
     local cmd_name = config.cmd and config.cmd[1] or name
     if vim.fn.executable(cmd_name) == 1 then
+        -- Capabilities an den Server weitergeben
+        config.capabilities = vim.tbl_deep_extend("force", config.capabilities or {}, capabilities)
         vim.lsp.config(name, config)
         vim.lsp.enable(name)
     end
