@@ -12,10 +12,6 @@ map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
 map("n", "<leader>x", ":bd<CR>", { desc = "Close buffer", silent = true })
 map("n", "<leader>X", ":bd!<CR>", { desc = "Force close buffer", silent = true })
 
--- Window Management
-map("n", "<leader>sh", ":split<CR>", { desc = "Horizontal Split" })
-map("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical Split" })
-
 -- Scroll and center cursor
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
