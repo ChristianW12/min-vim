@@ -18,3 +18,6 @@ require("blink.cmp").setup({
         default = { "lsp", "path", "snippets", "buffer" },
     },
 })
+local cmp = require('blink.cmp')
+cmp.build():pwait()
+cmp.setup()
