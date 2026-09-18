@@ -21,11 +21,11 @@
       "src": "https://github.com/github/copilot.vim"
     },
     "gitsigns.nvim": {
-      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
+      "rev": "8d79f2410c76e62b92e51c28c82e28c1c5a3daeb",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
-      "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
+      "rev": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
     "lazygit.nvim": {
@@ -41,7 +41,7 @@
       "src": "https://github.com/freeo/md-table.nvim"
     },
     "neo-tree.nvim": {
-      "rev": "5e076e5419b95b13c29383e1de29270a50df2d40",
+      "rev": "162f9b953a692b559afe43e38d60afee81e8e79b",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
     },
     "neotest": {
@@ -49,7 +49,7 @@
       "src": "https://github.com/nvim-neotest/neotest"
     },
     "neotest-java": {
-      "rev": "15abbc396981045fae873a962ef8d76710e6e0dc",
+      "rev": "71354dd2c3f59bcc2301528dfccbbfa2b85bb870",
       "src": "https://github.com/rcasia/neotest-java"
     },
     "neotest-vitest": {
@@ -73,7 +73,7 @@
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-dap": {
-      "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
+      "rev": "cfa2d58f4537aca6ca83e2de1a0d9f1491121264",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
@@ -105,11 +105,11 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
-      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
+      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
-      "rev": "898ee307df58f854d11cd7edd06472574d48014e",
+      "rev": "5c7b0263797dfd1bd6202f2b219f3b53a80b2187",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "nvim-ts-autotag": {
@@ -117,7 +117,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
+      "rev": "914decffe650296c87312c53b7933ecb86718499",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "obsidian.nvim": {
@@ -125,7 +125,7 @@
       "src": "https://github.com/epwalsh/obsidian.nvim"
     },
     "omni.nvim": {
-      "rev": "8219595cef76e6751ca922767f961a26caf7d0f7",
+      "rev": "1419a20aaffb204c13b2720cf65af7454183debf",
       "src": "https://github.com/harshrajsachan/omni.nvim"
     },
     "onedark.nvim": {
@@ -137,7 +137,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
+      "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "telescope-bibtex.nvim": {
@@ -165,15 +165,15 @@
       "src": "https://github.com/tpope/vim-fugitive"
     },
     "vim-moonfly-colors": {
-      "rev": "261664f92ed51cf0c077555b2d4b2530307eac17",
+      "rev": "2c883835f5b7b380a0a9e80695c420f7efebdfe4",
       "src": "https://github.com/bluz71/vim-moonfly-colors"
     },
     "vimtex": {
-      "rev": "c1b96604d9a387cde5a98bec8f6687ae3078b571",
+      "rev": "819b98b465d58347f6dc8134cc61db03f18691ad",
       "src": "https://github.com/lervag/vimtex"
     },
     "vscode.nvim": {
-      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
+      "rev": "6439ed89d0e10193f07e92268a321d7c6f6e93ee",
       "src": "https://github.com/mofiqul/vscode.nvim"
     },
     "which-key.nvim": {

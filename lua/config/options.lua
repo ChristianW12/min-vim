@@ -5,7 +5,7 @@ local opt = vim.opt
 -- =========================
 -- Colorscheme
 -- =========================
-vim.cmd.colorscheme("moonfly") -- Set colorscheme
+vim.cmd.colorscheme("vscode") -- Set colorscheme
 
 -- =========================
 -- Basics / UI
