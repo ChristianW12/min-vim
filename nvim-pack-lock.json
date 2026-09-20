@@ -40,6 +40,10 @@
       "rev": "fd1529b4cea88894f5efff0616df849ccec15098",
       "src": "https://github.com/freeo/md-table.nvim"
     },
+    "mini.nvim": {
+      "rev": "4389a4f31f854ce066949ea89c72dc71564f5c20",
+      "src": "https://github.com/echasnovski/mini.nvim"
+    },
     "neo-tree.nvim": {
       "rev": "162f9b953a692b559afe43e38d60afee81e8e79b",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"

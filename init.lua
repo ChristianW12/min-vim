@@ -55,14 +55,12 @@ vim.pack.add({
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/kdheepak/lazygit.nvim",
     -- Editor-Tools
-    "https://github.com/kylechui/nvim-surround",
+    "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/mbbill/undotree",
     "https://github.com/folke/todo-comments.nvim",
-    "https://github.com/windwp/nvim-autopairs",
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/which-key.nvim",
     "https://github.com/lukas-reineke/indent-blankline.nvim",
-    "https://github.com/Wansmer/treesj",
     "https://github.com/kevinhwang91/nvim-hlslens",
     "https://github.com/freeo/md-table.nvim",
     -- AI
