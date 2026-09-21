@@ -1,18 +1,25 @@
--- lua/config/plugins/mini.lua
--- Zentrale Konfiguration für alle mini.nvim Module
 
--- 1. mini.surround (Ersatz für nvim-surround)
--- Standard Tastenbelegungen:
--- - sa (hinzufügen)
--- - sd (löschen)
--- - sr (ersetzen)
 require("mini.surround").setup({})
+-- - sa (change)
+-- - sd (delete)
+-- - sr (replace)
 
--- 2. mini.pairs (Ersatz für nvim-autopairs)
--- Automatisches Schließen von (), [], {}, '', "", ``
 require("mini.pairs").setup({})
 
--- 3. mini.splitjoin (Ersatz für treesj)
--- Standard Tastenbelegung:
--- - gS (Toggle: umbrechen/zusammenfügen)
 require("mini.splitjoin").setup({})
+
+require("mini.move").setup({
+    mappings = {
+        -- Move visual selection in Visual mode
+        left = "<A-h>",
+        right = "<A-l>",
+        down = "<A-j>",
+        up = "<A-k>",
+
+        -- Move current line in Normal mode
+        line_left = "<A-h>",
+        line_right = "<A-l>",
+        line_down = "<A-j>",
+        line_up = "<A-k>",
+    },
+})

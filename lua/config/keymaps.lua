@@ -44,13 +44,13 @@ map("n", "<leader>cth", function()
     print("Theme '" .. name .. "' copied to clipboard!")
 end, { desc = "Copy current colorscheme name to clipboard" })
 
+-- deactivate since it's replaced by mini.move
 -- Move lines (Normal mode)
-map("n", "<A-j>", ":m .+1<CR>==", { desc = "line down" })
-map("n", "<A-k>", ":m .-2<CR>==", { desc = "line up" })
-
--- Move lines (Visual mode)
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected lines down" })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected lines up" })
+-- map("n", "<A-j>", ":m .+1<CR>==", { desc = "line down" })
+-- map("n", "<A-k>", ":m .-2<CR>==", { desc = "line up" })
+-- -- Move lines (Visual mode)
+-- map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected lines down" })
+-- map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected lines up" })
 
 
 -- =========================
