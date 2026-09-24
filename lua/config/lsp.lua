@@ -13,9 +13,7 @@ local function get_cmd(name)
     return name
 end
 
--- =========================
 -- Diagnostics State (persistent, cross-platform)
--- =========================
 local diagnostics_state_file = vim.fs.joinpath(vim.fn.stdpath("state"), "diagnostics_enabled")
 local inlay_hints_state_file = vim.fs.joinpath(vim.fn.stdpath("state"), "inlay_hints_enabled")
 
@@ -31,9 +29,7 @@ local function save_state(file, enabled)
     vim.fn.writefile({ enabled and "1" or "0" }, file)
 end
 
--- =========================
 -- Diagnostics configuration
--- =========================
 vim.diagnostic.config({
     virtual_text = {
         spacing = 4,
@@ -46,9 +42,7 @@ vim.diagnostic.config({
 })
 vim.diagnostic.enable(load_state(diagnostics_state_file))
 
--- =========================
 -- LSP keymaps and features (on LspAttach)
--- =========================
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local map = vim.keymap.set
@@ -121,9 +115,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- =========================
 -- Language configuration
--- =========================
 -- LSP servers that must be available in PATH
 local servers = {
     gopls = {

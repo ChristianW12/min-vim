@@ -1,6 +1,3 @@
--- lua/config/plugins/ui.lua
--- UI-Plugins: which-key, indent-blankline
-
 -- Which-Key
 vim.o.timeout = true
 vim.o.timeoutlen = 300

@@ -1,7 +1,4 @@
--- lua/config/plugins/formatting.lua
--- Formatter and linter: conform, nvim-lint
 
--- Conform (Formatter)
 require("conform").setup({
     formatters_by_ft = {
         javascript = { "prettier" },

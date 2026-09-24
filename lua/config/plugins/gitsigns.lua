@@ -1,4 +1,4 @@
--- lua/config/plugins/gitsigns.lua
+
 local function set_blame_hl()
     if vim.o.background == "light" then
         vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#6b7280", italic = true })

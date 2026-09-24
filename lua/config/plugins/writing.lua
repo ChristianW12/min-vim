@@ -1,5 +1,3 @@
--- lua/config/plugins/writing.lua
--- Writing-Plugins: obsidian, markdown-preview, vimtex
 
 local function get_obsidian_vault()
     local cwd = vim.uv.cwd()

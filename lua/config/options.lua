@@ -26,7 +26,7 @@ opt.splitbelow = true
 
 -- Spell Checking
 opt.spell = true
-opt.spelllang = { "de" }
+opt.spelllang = { "de", "en_us" }
 
 -- Indentation
 opt.expandtab = true

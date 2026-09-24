@@ -1,7 +1,4 @@
--- lua/config/plugins/dap.lua
--- Debugging and testing: nvim-dap, neotest
 
--- DAP (Debugging)
 local dap = require("dap")
 local dapui = require("dapui")
 
@@ -25,7 +22,6 @@ vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "DAP: Step into" })
 vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "DAP: Step out" })
 vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "DAP: Open REPL" })
 
--- Neotest (Testing)
 local neotest = require("neotest")
 neotest.setup({
     adapters = {

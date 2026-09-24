@@ -1,5 +1,3 @@
--- lua/config/plugins/project.lua
--- Lightweight project file picker without changing directories (cwd remains unchanged)
 
 local M = {}
 

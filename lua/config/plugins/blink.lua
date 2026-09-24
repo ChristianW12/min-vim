@@ -1,5 +1,3 @@
--- lua/config/plugins/blink.lua
--- Autocompletion mit blink.cmp (ersetzt native vim.lsp.completion)
 
 require("blink.cmp").setup({
     keymap = { preset = "default" },
