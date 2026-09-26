@@ -1,7 +1,3 @@
--- lua/config/lsp.lua
--- Native LSP setup without mason.nvim and nvim-lspconfig
--- Uses vim.lsp.config() and vim.lsp.enable() (Neovim 0.11+)
-
 local is_win = vim.fn.has("win32") == 1
 local sep = is_win and "\\" or "/"
 

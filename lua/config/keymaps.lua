@@ -1,6 +1,3 @@
--- lua/config/keymaps.lua
--- All keymaps copied from the old config
--- Plugin keymaps (formerly in lazy.nvim keys={}) are centralized here
 local map = vim.keymap.set
 
 -- =========================
@@ -29,7 +26,7 @@ map("n", "+", "10zlzz", { desc = "Scroll right and center cursor" })
 map("n", "ü", "10zhzz", { desc = "Scroll left and center cursor" })
 
 -- Search
-map("n", "<leader>nh", ":nohl<CR>", { desc = "Remove search highlight", silent = true })
+map("n", "<ESC>", ":nohl<CR>", { desc = "Remove search highlight", silent = true })
 
 -- Save/close files
 map("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
