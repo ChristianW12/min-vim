@@ -6,8 +6,8 @@ local map = vim.keymap.set
 -- Buffer Navigation
 map("n", "L", ":bnext<CR>", { desc = "Next buffer", silent = true })
 map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
-map("n", "<leader>x", ":bd<CR>", { desc = "Close buffer", silent = true })
-map("n", "<leader>X", ":bd!<CR>", { desc = "Force close buffer", silent = true })
+map("n", "<leader>bx", ":bd<CR>", { desc = "Close buffer", silent = true })
+map("n", "<leader>bX", ":bd!<CR>", { desc = "Force close buffer", silent = true })
 
 -- Scroll and center cursor
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
