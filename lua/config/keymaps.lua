@@ -10,8 +10,8 @@ map("n", "<leader>bx", ":bd<CR>", { desc = "Close buffer", silent = true })
 map("n", "<leader>bX", ":bd!<CR>", { desc = "Force close buffer", silent = true })
 
 -- Scroll and center cursor
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
+-- map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
+-- map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
 
 -- Wrap-aware Bewegung
 -- map("n", "j", function()
@@ -22,17 +22,17 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
 -- end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
 -- Horizontal scrolling
-map("n", "+", "10zlzz", { desc = "Scroll right and center cursor" })
-map("n", "ü", "10zhzz", { desc = "Scroll left and center cursor" })
+map("n", "+", "10zl", { desc = "Scroll right and center cursor" })
+map("n", "ü", "10zh", { desc = "Scroll left and center cursor" })
 
 -- Search
 map("n", "<ESC>", ":nohl<CR>", { desc = "Remove search highlight", silent = true })
 
 -- Save/close files
-map("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
-map("n", "<leader>W", ":wa<CR>", { desc = "Save all files", silent = true })
-map("n", "<leader>q", ":confirm q<CR>", { desc = "Quit Neovim", silent = true })
-map("n", "<leader>Q", ":qall!<CR>", { desc = "Force quit Neovim", silent = true })
+-- map("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
+-- map("n", "<leader>W", ":wa<CR>", { desc = "Save all files", silent = true })
+-- map("n", "<leader>q", ":confirm q<CR>", { desc = "Quit Neovim", silent = true })
+-- map("n", "<leader>Q", ":qall!<CR>", { desc = "Force quit Neovim", silent = true })
 
 -- Copy colorscheme to clipboard
 map("n", "<leader>cth", function()
@@ -125,7 +125,7 @@ map("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Select buffer" })
 map("n", "<leader>bc", ":bd<CR>", { desc = "Close buffer", silent = true })
 
 -- =========================
--- Mail Contacts (Telescope Custom Picker)
+-- Mail Contacts (Telescope Custom Picker) NOTE: currently not in use since im not using aerc as an email client
 -- =========================
 map("n", "<leader>mc", function()
     local pickers = require("telescope.pickers")
