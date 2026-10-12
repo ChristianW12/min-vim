@@ -26,8 +26,6 @@ require("mini.move").setup({
 
 require("mini.tabline").setup({})
 
-require("mini.starter").setup({})
-
 local indentscope = require("mini.indentscope")
 indentscope.setup({
     draw = {
