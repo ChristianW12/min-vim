@@ -140,6 +140,9 @@ local servers = {
         settings = {
             python = {
                 analysis = {
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                    autoImportCompletions = true,
                     inlayHints = {
                         variableTypes = true,
                         functionReturnTypes = true,
@@ -199,6 +202,11 @@ local servers = {
         filetypes = { "markdown" },
         root_markers = { ".git" },
     },
+    texlab = {
+        cmd = { get_cmd("texlab") },
+        filetypes = { "tex", "plaintex", "bib" },
+        root_markers = { ".git", ".latexmkrc", "latexmkrc" },
+    },
 }
 
 -- PowerShell Editor Services (useful only on Windows)
@@ -208,6 +216,57 @@ if is_win then
         filetypes = { "ps1", "psm1", "psd1" },
         root_markers = { ".git" },
     }
+end
+
+-- ============================================================================
+-- Mason Setup & automatische Paket-Installation
+-- ============================================================================
+local has_mason, mason = pcall(require, "mason")
+if has_mason then
+    mason.setup({
+        ui = {
+            border = "rounded",
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗",
+            },
+        },
+    })
+
+    local mason_packages = {
+        "lua-language-server",
+        "pyright",
+        "gopls",
+        "clangd",
+        "vtsls",
+        "html-lsp",
+        "css-lsp",
+        "sql-language-server",
+        "angular-language-server",
+        "lemminx",
+        "vim-language-server",
+        "bash-language-server",
+        "markdown-oxide",
+        "texlab",
+    }
+    if is_win then
+        table.insert(mason_packages, "powershell-editor-services")
+    end
+
+    local has_registry, registry = pcall(require, "mason-registry")
+    if has_registry then
+        registry.refresh(function()
+            for _, pkg_name in ipairs(mason_packages) do
+                if registry.has_package(pkg_name) then
+                    local pkg = registry.get_package(pkg_name)
+                    if not pkg:is_installed() then
+                        pkg:install()
+                    end
+                end
+            end
+        end)
+    end
 end
 
 -- Capabilities für blink.cmp abrufen

@@ -53,6 +53,9 @@ vim.pack.add({
     "https://github.com/stevearc/conform.nvim",
     "https://github.com/mfussenegger/nvim-lint",
 
+    -- LSP & Tool Management
+    "https://github.com/williamboman/mason.nvim",
+
     -- DAP
     "https://github.com/mfussenegger/nvim-dap",
     "https://github.com/rcarriga/nvim-dap-ui",
