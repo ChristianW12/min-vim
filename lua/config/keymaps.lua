@@ -120,9 +120,9 @@ end, { desc = "Search and Open File Externally" })
 -- Outline replaced by Telescope LSP symbols
 map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Document Symbols (Outline)" })
 
--- Buffer selection (replaces Bufferline keymaps)
-map("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Select buffer" })
-map("n", "<leader>bc", ":bd<CR>", { desc = "Close buffer", silent = true })
+-- -- Buffer selection (replaces Bufferline keymaps) Not currently in use
+-- map("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Select buffer" })
+-- map("n", "<leader>bc", ":bd<CR>", { desc = "Close buffer", silent = true })
 
 -- =========================
 -- Mail Contacts (Telescope Custom Picker) NOTE: currently not in use since im not using aerc as an email client

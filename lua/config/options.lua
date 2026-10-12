@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- Colorscheme
-vim.cmd.colorscheme("vscode") -- Set colorscheme
+vim.cmd.colorscheme("onedark") -- Set colorscheme
 
 -- Basics / UI
 opt.termguicolors = true

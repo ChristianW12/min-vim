@@ -23,3 +23,21 @@ require("mini.move").setup({
         line_up = "<A-k>",
     },
 })
+
+require("mini.tabline").setup({})
+
+require("mini.starter").setup({})
+
+local indentscope = require("mini.indentscope")
+indentscope.setup({
+    draw = {
+        delay = 0,
+        animation = indentscope.gen_animation.none(),
+    },
+})
+
+require("mini.cursorword").setup({
+    delay = 100,
+    -- Highlight only on the cursor word
+    modes = { "n", "v" },
+})

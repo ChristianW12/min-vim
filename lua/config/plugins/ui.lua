@@ -18,26 +18,3 @@ wk.add({
     { "<leader>g", group = "Git" },
     { "<leader>gh", group = "Git Hunks (Changes)" },
 })
-
--- Indent Blankline
-require("ibl").setup({
-    indent = {
-        char = "│",
-        tab_char = "│",
-    },
-    scope = {
-        enabled = true,
-        show_start = true,
-        show_end = false,
-        highlight = { "Function", "Label" },
-    },
-    exclude = {
-        filetypes = {
-            "help",
-            "dashboard",
-            "Trouble",
-            "notify",
-            "toggleterm",
-        },
-    },
-})
