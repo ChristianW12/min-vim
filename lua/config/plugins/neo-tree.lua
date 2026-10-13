@@ -18,7 +18,7 @@ require("neo-tree").setup({
         width = 40,
         mappings = {
             ["/"] = "none",
-            ["O"] = "open_with_system_app",
+            ["o"] = "open_with_system_app",
         },
     },
     commands = {

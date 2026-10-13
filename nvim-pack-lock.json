@@ -20,6 +20,10 @@
       "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
       "src": "https://github.com/github/copilot.vim"
     },
+    "csvview.nvim": {
+      "rev": "f190de76d2eca0380ddcb2425cd582d740699b55",
+      "src": "https://github.com/hat0uma/csvview.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
