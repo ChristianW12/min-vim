@@ -43,6 +43,8 @@ require("mini.sessions").setup({
     autowrite = true,
     -- Read default/latest session if Neovim opened without file arguments
     autoread = false,
+    -- Allow deleting the currently active session
+    force = { delete = true },
 })
 
 -- Session management keymaps
@@ -70,6 +72,6 @@ vim.keymap.set("n", "<leader>sw", function()
 end, { desc = "Save/Update Session" })
 
 vim.keymap.set("n", "<leader>sd", function()
-    require("mini.sessions").select("delete")
+    require("mini.sessions").select("delete", { force = true })
 end, { desc = "Delete Session" })
 
