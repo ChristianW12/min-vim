@@ -36,6 +36,7 @@ vim.pack.add({
     "https://github.com/kevinhwang91/nvim-hlslens",
     "https://github.com/freeo/md-table.nvim",
     "https://github.com/hat0uma/csvview.nvim",
+    "https://github.com/Kyytox/data-explorer.nvim",
 
     -- AI
     "https://github.com/github/copilot.vim",
@@ -53,6 +54,7 @@ vim.pack.add({
     -- Formatter & Linter
     "https://github.com/stevearc/conform.nvim",
     "https://github.com/mfussenegger/nvim-lint",
+    "https://github.com/dhruvasagar/vim-table-mode",
 
     -- LSP & Tool Management
     "https://github.com/williamboman/mason.nvim",
