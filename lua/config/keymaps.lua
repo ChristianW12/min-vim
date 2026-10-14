@@ -13,7 +13,7 @@ map("n", "<leader>bX", ":bd!<CR>", { desc = "Force close buffer", silent = true 
 -- map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
 -- map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
 
--- Wrap-aware Bewegung
+-- Wrap-aware movement
 -- map("n", "j", function()
 --     return vim.v.count == 0 and "gj" or "j"
 -- end, { expr = true, silent = true, desc = "Down (wrap-aware)" })

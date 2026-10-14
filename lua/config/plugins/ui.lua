@@ -18,6 +18,7 @@ wk.add({
     { "<leader>g", group = "Git" },
     { "<leader>gh", group = "Git Hunks (Changes)" },
     { "<leader>t", group = "Toggle" },
+    { "<leader>s", group = "Session / Search" },
 })
 
 require("csvview").setup({

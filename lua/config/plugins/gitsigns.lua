@@ -34,7 +34,7 @@ require("gitsigns").setup({
             vim.keymap.set(mode, l, r, opts)
         end
 
-        -- Navigation durch Changes
+        -- Navigate changes
         map("n", "]c", function()
             if vim.wo.diff then return "]c" end
             vim.schedule(function() gs.next_hunk() end)
@@ -47,7 +47,7 @@ require("gitsigns").setup({
             return "<Ignore>"
         end, { expr = true, desc = "Previous Change" })
 
-        -- Git Aktionen
+        -- Git actions
         map("n", "<leader>ghp", gs.preview_hunk, { desc = "Preview Hunk" })
         map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, { desc = "Git Blame" })
         map("n", "<leader>ghs", gs.stage_hunk, { desc = "Stage Hunk" })

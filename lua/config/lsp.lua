@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 
 
-        -- Go: Automatische Imports und Formatierung beim Speichern
+        -- Go: Automatic imports and formatting on save
         if client and client.name == "gopls" then
             vim.api.nvim_create_autocmd("BufWritePre", {
                 buffer = ev.buf,
@@ -219,7 +219,7 @@ if is_win then
 end
 
 -- ============================================================================
--- Mason Setup & automatische Paket-Installation
+-- Mason Setup & automatic package installation
 -- ============================================================================
 local has_mason, mason = pcall(require, "mason")
 if has_mason then
@@ -269,7 +269,7 @@ if has_mason then
     end
 end
 
--- Capabilities für blink.cmp abrufen
+-- Retrieve capabilities for blink.cmp
 local has_blink, blink = pcall(require, "blink.cmp")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 if has_blink then
@@ -281,7 +281,7 @@ for name, config in pairs(servers) do
     -- Enable only when the executable is found in PATH
     local cmd_name = config.cmd and config.cmd[1] or name
     if vim.fn.executable(cmd_name) == 1 then
-        -- Capabilities an den Server weitergeben
+        -- Forward capabilities to the server
         config.capabilities = vim.tbl_deep_extend("force", config.capabilities or {}, capabilities)
         vim.lsp.config(name, config)
         vim.lsp.enable(name)

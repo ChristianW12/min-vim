@@ -24,8 +24,6 @@ require("mini.move").setup({
     },
 })
 
-require("mini.tabline").setup({})
-
 require("mini.indentscope").setup({
     draw = {
         delay = 0,
