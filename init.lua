@@ -32,7 +32,7 @@ vim.pack.add({
     "https://github.com/folke/todo-comments.nvim",
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/which-key.nvim",
-    "https://github.com/lukas-reineke/indent-blankline.nvim",
+    -- "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/kevinhwang91/nvim-hlslens",
     "https://github.com/freeo/md-table.nvim",
     "https://github.com/hat0uma/csvview.nvim",
