@@ -30,3 +30,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
         lint.try_lint()
     end,
 })
+
+-- vim-table-mode
+vim.g.table_mode_corner = "|"

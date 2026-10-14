@@ -37,6 +37,8 @@ require("mini.indentscope").setup({
 --     modes = { "n", "v" },
 -- })
 
+require("mini.jump2d").setup({})
+
 -- mini.sessions
 require("mini.sessions").setup({
     -- Automatically save active session on exit

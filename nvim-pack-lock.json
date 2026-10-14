@@ -24,6 +24,10 @@
       "rev": "f190de76d2eca0380ddcb2425cd582d740699b55",
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
+    "data-explorer.nvim": {
+      "rev": "cf5174f47dc1fe5dcc3725b2951d6b4221121f82",
+      "src": "https://github.com/Kyytox/data-explorer.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -179,6 +183,10 @@
     "vim-moonfly-colors": {
       "rev": "2c883835f5b7b380a0a9e80695c420f7efebdfe4",
       "src": "https://github.com/bluz71/vim-moonfly-colors"
+    },
+    "vim-table-mode": {
+      "rev": "bb025308a45c67c7c8f0763ba37bc2ee3f534df0",
+      "src": "https://github.com/dhruvasagar/vim-table-mode"
     },
     "vimtex": {
       "rev": "bbfa1501287b65e8803d5cc1007db2c2351c4453",
