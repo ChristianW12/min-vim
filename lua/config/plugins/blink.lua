@@ -1,5 +1,8 @@
 
 require("blink.cmp").setup({
+    fuzzy = {
+        implementation = "prefer_rust",
+    },
     keymap = { preset = "default" },
     appearance = {
         use_nvim_cmp_as_default = true,
