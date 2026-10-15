@@ -82,7 +82,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Markdown Preview
-vim.g.mkdp_auto_start = 0
+-- vim.g.mkdp_auto_start = 0
+require("live-preview").setup({})
 
 -- VimTeX (only for PA/PA2/BA folders)
 local folder = vim.fs.basename(vim.fn.getcwd())
