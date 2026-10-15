@@ -47,6 +47,7 @@ vim.pack.add({
     -- "https://github.com/iamcco/markdown-preview.nvim", -- disabled since its not under active development
     "https://github.com/brianhuster/live-preview.nvim", -- replacement for markdown-preview.nvim
     "https://github.com/nvim-telescope/telescope-bibtex.nvim",
+    -- "https://github.com/frabjous/knap",
 
     -- Language-specific
     "https://github.com/lervag/vimtex",
