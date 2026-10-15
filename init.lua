@@ -94,3 +94,13 @@ for _, file in ipairs(vim.fn.readdir(plugin_conf_dir)) do
         require("config.plugins." .. file:gsub("%.lua$", ""))
     end
 end
+
+
+-- setting local settings, which are not tracked by git
+local local_options = vim.fs.joinpath(vim.fn.stdpath("config"), "local_options.lua")
+if vim.uv.fs_stat(local_options) then
+    local ok, err = pcall(dofile, local_options)
+    if not ok then
+        vim.notify("Fehler beim Laden von local_options.lua: " .. tostring(err), vim.log.levels.WARN)
+    end
+end
