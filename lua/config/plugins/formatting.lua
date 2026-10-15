@@ -33,3 +33,4 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
 
 -- vim-table-mode
 vim.g.table_mode_corner = "|"
+vim.g.table_mode_map_prefix = "<leader>a"
