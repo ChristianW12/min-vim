@@ -1,4 +1,50 @@
 
+require("mini.tabline").setup({})
+
+-- Dynamically adapt colors to the active theme
+local function configure_tabline_colors()
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    local comment = vim.api.nvim_get_hl(0, { name = "Comment" })
+    local cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
+    local tabline_sel = vim.api.nvim_get_hl(0, { name = "TabLineSel" })
+
+    local bg_editor = normal.bg
+    local fg_muted = comment.fg
+    local fg_active = normal.fg
+
+    -- Active tab: use CursorLine background (subtly highlighted) or fallback to TabLineSel
+    local bg_active = cursorline.bg
+    if not bg_active or bg_active == bg_editor then
+        bg_active = tabline_sel.bg
+    end
+
+    local fg_active_tab = fg_active
+    if bg_active == tabline_sel.bg and tabline_sel.fg then
+        fg_active_tab = tabline_sel.fg
+    end
+
+    -- Inactive buffer: blend seamlessly with the editor background, subtle readable text
+    vim.api.nvim_set_hl(0, "MiniTablineHidden", { fg = fg_muted, bg = bg_editor })
+
+    -- Active buffer: clearly highlighted (active background and bold text)
+    vim.api.nvim_set_hl(0, "MiniTablineCurrent", { fg = fg_active_tab, bg = bg_active, bold = true })
+
+    -- Buffer in another visible split window
+    vim.api.nvim_set_hl(0, "MiniTablineVisible", { fg = fg_active, bg = bg_editor })
+
+    -- Background of the entire tabline
+    vim.api.nvim_set_hl(0, "MiniTablineFill", { bg = bg_editor })
+end
+
+-- Reapply automatically on theme change
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = configure_tabline_colors,
+})
+
+-- Run once on startup
+configure_tabline_colors()
+
 require("mini.surround").setup({})
 -- - sa (change)
 -- - sd (delete)
