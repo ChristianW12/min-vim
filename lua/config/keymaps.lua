@@ -4,8 +4,8 @@ local map = vim.keymap.set
 -- General Mappings
 -- =========================
 -- Buffer Navigation
--- map("n", "L", ":bnext<CR>", { desc = "Next buffer", silent = true })
--- map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
+map("n", "L", ":bnext<CR>", { desc = "Next buffer", silent = true })
+map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
 map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer", silent = true })
 map("n", "<leader>bD", ":bd!<CR>", { desc = "Force close buffer", silent = true })
 
@@ -70,6 +70,7 @@ map("n", "fg", "<cmd>Telescope live_grep<cr>", { desc = "Search Text (Grep)" })
 map("n", "fb", "<cmd>Telescope buffers<cr>", { desc = "Search Open Buffers" })
 map("n", "fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Neovim Help" })
 map("n", "fr", "<cmd>Telescope lsp_references<cr>", { desc = "Search LSP References" })
+map("n", "<leader>so", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Search LSP Symbols" })
 
 -- Find config files (cross-platform)
 map("n", "<leader>fc", function()
