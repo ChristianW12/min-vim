@@ -144,6 +144,10 @@
       "rev": "df4792accde9db0043121f32628bcf8e645d9aea",
       "src": "https://github.com/navarasu/onedark.nvim"
     },
+    "outline.nvim": {
+      "rev": "d8e48fe265fa9c33364809bf9cf32a1f032a8ac1",
+      "src": "https://github.com/hedyhli/outline.nvim"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"

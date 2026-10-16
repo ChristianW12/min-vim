@@ -70,6 +70,7 @@ map("n", "fg", "<cmd>Telescope live_grep<cr>", { desc = "Search Text (Grep)" })
 map("n", "fb", "<cmd>Telescope buffers<cr>", { desc = "Search Open Buffers" })
 map("n", "fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Neovim Help" })
 map("n", "fr", "<cmd>Telescope lsp_references<cr>", { desc = "Search LSP References" })
+map("n", "<leader>so", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Search LSP Symbols" })
 
 -- Find config files (cross-platform)
 map("n", "<leader>fc", function()

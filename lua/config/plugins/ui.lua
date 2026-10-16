@@ -50,6 +50,12 @@ require("csvview").setup({
 
 vim.keymap.set("n", "<leader>tc", "<cmd>CsvViewToggle<cr>", { desc = "Toggle CSV View" })
 
+-- Outline.nvim
+require("outline").setup({
+    width = 50,
+})
+vim.keymap.set("n", "<leader>to", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+
 -- Data Explorer passes fnameescape() output to DuckDB as a SQL path. On
 -- Windows, that adds backslashes before spaces; DuckDB needs SQL-safe paths.
 if vim.fn.has("win32") == 1 then
