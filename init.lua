@@ -36,7 +36,6 @@ vim.pack.add({
     "https://github.com/kevinhwang91/nvim-hlslens",
     "https://github.com/freeo/md-table.nvim",
     "https://github.com/hat0uma/csvview.nvim",
-    "https://github.com/Kyytox/data-explorer.nvim",
 
     -- AI
     "https://github.com/github/copilot.vim",
