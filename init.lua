@@ -32,7 +32,6 @@ vim.pack.add({
     "https://github.com/folke/todo-comments.nvim",
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/which-key.nvim",
-    -- "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/kevinhwang91/nvim-hlslens",
     "https://github.com/freeo/md-table.nvim",
     "https://github.com/hat0uma/csvview.nvim",
@@ -43,39 +42,32 @@ vim.pack.add({
     -- Writing
     "https://github.com/epwalsh/obsidian.nvim",
     "https://github.com/MeanderingProgrammer/render-markdown.nvim",
-    -- "https://github.com/iamcco/markdown-preview.nvim", -- disabled since its not under active development
-    "https://github.com/brianhuster/live-preview.nvim", -- replacement for markdown-preview.nvim
+    "https://github.com/brianhuster/live-preview.nvim", 
     "https://github.com/nvim-telescope/telescope-bibtex.nvim",
     -- "https://github.com/frabjous/knap",
     "https://github.com/hedyhli/outline.nvim",
 
     -- Language-specific
-    "https://github.com/lervag/vimtex",
-    "https://github.com/mfussenegger/nvim-jdtls",
 
     -- Formatter & Linter
     "https://github.com/stevearc/conform.nvim",
     "https://github.com/mfussenegger/nvim-lint",
     "https://github.com/dhruvasagar/vim-table-mode",
 
-    -- LSP & Tool Management
+    -- LSP, Tool Management, Completion, Testing
     "https://github.com/williamboman/mason.nvim",
-
-    -- DAP
+    "https://github.com/saghen/blink.lib",
+    "https://github.com/saghen/blink.cmp",
     "https://github.com/mfussenegger/nvim-dap",
     "https://github.com/rcarriga/nvim-dap-ui",
     "https://github.com/theHamsta/nvim-dap-virtual-text",
     "https://github.com/nvim-neotest/nvim-nio",
-
-    -- Testing
     "https://github.com/nvim-neotest/neotest",
     "https://github.com/antoinemadec/FixCursorHold.nvim",
     "https://github.com/marilari88/neotest-vitest",
     "https://github.com/rcasia/neotest-java",
-
-    -- Completion
-    "https://github.com/saghen/blink.lib",
-    "https://github.com/saghen/blink.cmp",
+    "https://github.com/lervag/vimtex",
+    "https://github.com/mfussenegger/nvim-jdtls",
 
     -- Theme
     "https://github.com/harshrajsachan/omni.nvim",

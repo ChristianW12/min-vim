@@ -42,7 +42,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     callback = configure_tabline_colors,
 })
 
--- Run once on startup
 configure_tabline_colors()
 
 require("mini.surround").setup({})
