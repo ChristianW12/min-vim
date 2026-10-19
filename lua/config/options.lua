@@ -14,6 +14,7 @@ opt.breakindent = true
 opt.conceallevel = 2 -- Show Obsidian UI (checkboxes, links)
 opt.inccommand = "split"
 opt.termguicolors = true
+opt.winborder = "rounded"
 
 -- Preserve context while scrolling
 opt.scroll = 5
@@ -57,7 +58,7 @@ opt.timeoutlen = 400
 opt.mouse = "a"
 
 -- Clipboard
-opt.clipboard:append("unnamedplus") 
+opt.clipboard:append("unnamedplus")
 
 -- Folding (Treesitter-based, replaces UFO)
 opt.foldcolumn = "1"
