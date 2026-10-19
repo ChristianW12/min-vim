@@ -6,6 +6,10 @@ require("blink.cmp").setup({
     keymap = {
         preset = "default",
         ["<C-x><C-o>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-b>"] = {},
+        ["<C-f>"] = {},
+        ["<C-k>"] = { "scroll_documentation_up" },
+        ["<C-j>"] = { "scroll_documentation_down" },
     },
     appearance = {
         use_nvim_cmp_as_default = true,
@@ -28,7 +32,14 @@ require("blink.cmp").setup({
         },
     },
     sources = {
-        default = { "lsp", "omni", "path", "snippets", "buffer" },
+        default = { "lazydev", "lsp", "omni", "path", "snippets", "buffer" },
+        providers = {
+            lazydev = {
+                name = "LazyDev",
+                module = "lazydev.integrations.blink",
+                score_offset = 100,
+            },
+        },
         per_filetype = {
             tex = { "lsp", "omni", "path", "snippets", "buffer" },
             plaintex = { "lsp", "omni", "path", "snippets", "buffer" },

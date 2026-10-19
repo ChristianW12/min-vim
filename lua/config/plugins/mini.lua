@@ -49,6 +49,8 @@ require("mini.surround").setup({})
 -- - sd (delete)
 -- - sr (replace)
 
+require("mini.notify").setup({})
+
 require("mini.pairs").setup({})
 
 require("mini.splitjoin").setup({})

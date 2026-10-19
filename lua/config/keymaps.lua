@@ -65,11 +65,11 @@ map("n", "<leader>E", "<cmd>Neotree filesystem reveal float<CR>", { desc = "Floa
 -- =========================
 -- Telescope keymaps (formerly in lazy keys={})
 -- =========================
-map("n", "ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
-map("n", "fg", "<cmd>Telescope live_grep<cr>", { desc = "Search Text (Grep)" })
-map("n", "fb", "<cmd>Telescope buffers<cr>", { desc = "Search Open Buffers" })
-map("n", "fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Neovim Help" })
-map("n", "fr", "<cmd>Telescope lsp_references<cr>", { desc = "Search LSP References" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Search Text (Grep)" })
+map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Search Open Buffers" })
+map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Neovim Help" })
+map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", { desc = "Search LSP References" })
 map("n", "<leader>so", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Search LSP Symbols" })
 
 -- Find config files (cross-platform)
@@ -243,6 +243,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = "*",
     callback = function(args)
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
         local buf = args.buf
         local name = vim.api.nvim_buf_get_name(buf)
         local is_lazygit = vim.bo[buf].filetype == "lazygit" or name:lower():match("lazygit") ~= nil

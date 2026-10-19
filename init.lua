@@ -55,6 +55,7 @@ vim.pack.add({
     "https://github.com/dhruvasagar/vim-table-mode",
 
     -- LSP, Tool Management, Completion, Testing
+    "https://github.com/folke/lazydev.nvim",
     "https://github.com/williamboman/mason.nvim",
     "https://github.com/saghen/blink.lib",
     "https://github.com/saghen/blink.cmp",
