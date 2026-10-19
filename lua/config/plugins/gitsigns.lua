@@ -49,7 +49,7 @@ require("gitsigns").setup({
 
         -- Git actions
         map("n", "<leader>ghp", gs.preview_hunk, { desc = "Preview Hunk" })
-        map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, { desc = "Git Blame" })
+        map("n", "<leader>ghb", gs.blame, { desc = "Git Blame File" })
         map("n", "<leader>ghs", gs.stage_hunk, { desc = "Stage Hunk" })
         map("n", "<leader>ghr", gs.reset_hunk, { desc = "Reset Hunk" })
         map("n", "<leader>ghu", gs.undo_stage_hunk, { desc = "Undo Stage Hunk" })
