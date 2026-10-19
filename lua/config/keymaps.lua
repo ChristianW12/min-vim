@@ -56,7 +56,10 @@ end, { desc = "Copy current colorscheme name to clipboard" })
 -- map("n", "<leader>e", ":Lexplore<CR>", { desc = "Toggle Explorer", silent = true })
 -- map("n", "<leader>fe", ":Lexplore<CR>", { desc = "Focus Explorer", silent = true })
 -- map("n", "<leader>E", ":Lexplore<CR>", { desc = "Toggle file explorer", silent = true })
-map("n", "<leader>e", "<cmd>Neotree toggle filesystem reveal left<CR>", { desc = "Toggle Explorer", silent = true, })
+map("n", "<leader>e", function()
+    vim.cmd("Neotree toggle filesystem reveal left")
+    vim.notify("File Explorer: Toggled", vim.log.levels.INFO)
+end, { desc = "Toggle Explorer", silent = true })
 
 map("n", "<leader>fe", "<cmd>Neotree focus filesystem left<CR>", { desc = "Focus Explorer", silent = true, })
 
@@ -203,7 +206,10 @@ map("n", "<leader>sT", "<cmd>TodoTelescope keywords=TODO,NOTE<cr>", { desc = "To
 -- =========================
 -- Undotree Keymaps
 -- =========================
-map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undo Tree Toggle" })
+map("n", "<leader>u", function()
+    vim.cmd("UndotreeToggle")
+    vim.notify("Undotree: Toggled", vim.log.levels.INFO)
+end, { desc = "Undo Tree Toggle" })
 map("n", "<leader>uf", "<cmd>UndotreeFocus<CR>", { desc = "Undo Tree Focus" })
 
 -- =========================

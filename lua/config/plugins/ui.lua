@@ -48,13 +48,27 @@ require("csvview").setup({
     },
 })
 
-vim.keymap.set("n", "<leader>tc", "<cmd>CsvViewToggle<cr>", { desc = "Toggle CSV View" })
+vim.keymap.set("n", "<leader>tc", function()
+    require("csvview").toggle()
+    if require("csvview").is_enabled() then
+        vim.notify("CSV View: ON", vim.log.levels.INFO)
+    else
+        vim.notify("CSV View: OFF", vim.log.levels.WARN)
+    end
+end, { desc = "Toggle CSV View" })
 
 -- Outline.nvim
 require("outline").setup({
     width = 50,
 })
-vim.keymap.set("n", "<leader>to", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+vim.keymap.set("n", "<leader>to", function()
+    require("outline").toggle()
+    if require("outline").is_open() then
+        vim.notify("Outline: ON", vim.log.levels.INFO)
+    else
+        vim.notify("Outline: OFF", vim.log.levels.WARN)
+    end
+end, { desc = "Toggle Outline" })
 
 -- Data Explorer (Lazy loaded via <leader>fd / <leader>fD)
 local function load_data_explorer(cmd)

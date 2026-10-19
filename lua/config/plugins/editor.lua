@@ -23,4 +23,7 @@ vim.g.undotree_UndoDir = vim.o.undodir
 require("hlslens").setup({})
 
 require("md-table")
-vim.keymap.set("n", "<leader>tmt", "<cmd>MdTable<cr>" , { desc = "Toggle Markdown Table" })
+vim.keymap.set("n", "<leader>tmt", function()
+    vim.cmd("MdTable")
+    vim.notify("Markdown Table Mode: Toggled", vim.log.levels.INFO)
+end, { desc = "Toggle Markdown Table" })

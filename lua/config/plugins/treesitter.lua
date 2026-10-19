@@ -39,5 +39,5 @@ map({ "x", "o" }, "ib", function() sel.select_textobject("@block.inner", "textob
 local move = require("nvim-treesitter-textobjects.move")
 map("n", "]f", function() move.goto_next_start("@function.outer", "textobjects") end, { desc = "TS: next function" })
 map("n", "[f", function() move.goto_previous_start("@function.outer", "textobjects") end, { desc = "TS: prev function" })
-map("n", "]c", function() move.goto_next_start("@class.outer", "textobjects") end, { desc = "TS: next class" })
-map("n", "[c", function() move.goto_previous_start("@class.outer", "textobjects") end, { desc = "TS: prev class" })
+map("n", "]k", function() move.goto_next_start("@class.outer", "textobjects") end, { desc = "TS: next class" })
+map("n", "[k", function() move.goto_previous_start("@class.outer", "textobjects") end, { desc = "TS: prev class" })
