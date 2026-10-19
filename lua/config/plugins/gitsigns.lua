@@ -22,7 +22,7 @@ require("gitsigns").setup({
     current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol",
-        delay = 1000,
+        delay = 0,
         ignore_whitespace = false,
     },
     on_attach = function(bufnr)
@@ -49,10 +49,12 @@ require("gitsigns").setup({
 
         -- Git actions
         map("n", "<leader>ghp", gs.preview_hunk, { desc = "Preview Hunk" })
-        map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, { desc = "Git Blame" })
+        map("n", "<leader>ghb", gs.blame, { desc = "Git Blame File" })
         map("n", "<leader>ghs", gs.stage_hunk, { desc = "Stage Hunk" })
-        map("n", "<leader>ghr", gs.reset_hunk, { desc = "Reset Hunk" })
         map("n", "<leader>ghu", gs.undo_stage_hunk, { desc = "Undo Stage Hunk" })
-        map("n", "<leader>gtb", gs.toggle_current_line_blame, { desc = "Toggle Git Blame Virtual Text" })
+        map("n", "<leader>ghr", gs.reset_hunk, { desc = "Reset Hunk" })
+        map("n", "<leader>tgb", gs.toggle_current_line_blame, { desc = "Toggle Git Blame Virtual Text" })
+        map("n", "<leader>gb", gs.blame_line, { desc = "Git Blame Line" })
+        map("n", "<leader>gB", function() gs.blame_line({ full = true }) end, { desc = "Git Blame Line (Full)" })
     end,
 })

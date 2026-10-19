@@ -85,10 +85,10 @@ end, { desc = "Find Config Files" })
 map("n", "<leader>TH", "<cmd>Telescope colorscheme enable_preview=true<cr>", { desc = "Colorscheme Preview" })
 
 -- Git Telescope Pickers
-map("n", "<leader>ghs", "<cmd>Telescope git_status<cr>", { desc = "Git Status (Telescope)" })
-map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Git Files" })
 map("n", "<leader>ghc", "<cmd>Telescope git_commits<cr>", { desc = "Git Commits" })
-map("n", "<leader>ghB", "<cmd>Telescope git_branches<cr>", { desc = "Git Branches" })
+-- map("n", "<leader>ghs", "<cmd>Telescope git_status<cr>", { desc = "Git Status (Telescope)" })
+-- Bap("n", "<leader>ghB", "<cmd>Telescope git_branches<cr>", { desc = "Git Branches" })
+-- map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Git Files" })
 
 -- Open file externally (cross-platform)
 map("n", "<leader>oe", function()
@@ -117,9 +117,6 @@ map("n", "<leader>oe", function()
         end,
     })
 end, { desc = "Search and Open File Externally" })
-
--- Outline replaced by Telescope LSP symbols
-map("n", "<leader>to", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Document Symbols (Outline)" })
 
 -- -- Buffer selection (replaces Bufferline keymaps) Not currently in use
 -- map("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Select buffer" })
@@ -167,15 +164,13 @@ map("n", "<leader>mc", function()
 end, { desc = "Insert Mail Contacts" })
 
 -- =========================
--- Fugitive keymaps (formerly in lazy keys={})
+-- Git workflow keymaps
 -- =========================
 map("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git Status" })
 map("n", "<leader>gc", "<cmd>Git commit<cr>", { desc = "Git Commit" })
 map("n", "<leader>gca", "<cmd>Git commit --amend<cr>", { desc = "Git Commit Amend" })
 map("n", "<leader>gP", "<cmd>Git push<cr>", { desc = "Git Push" })
 map("n", "<leader>gp", "<cmd>Git pull<cr>", { desc = "Git Pull" })
-map("n", "<leader>gd", "<cmd>Gvdiffsplit<cr>", { desc = "Git Diff Vertical Split" })
-map("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "Git Blame (Fugitive)" })
 map("n", "<leader>gm", function()
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
