@@ -45,9 +45,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 configure_tabline_colors()
 
 require("mini.surround").setup({})
--- - sa (change)
--- - sd (delete)
--- - sr (replace)
+
+require("mini.map").setup({})
 
 require("mini.notify").setup({
     lsp_progress = {

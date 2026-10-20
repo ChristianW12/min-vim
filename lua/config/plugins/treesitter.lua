@@ -22,6 +22,19 @@ require("nvim-treesitter").setup({
     },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(args)
+        local filetype = vim.bo[args.buf].filetype
+        local lang = vim.treesitter.language.get_lang(filetype) or filetype
+        local installed = require("nvim-treesitter").get_installed("parsers")
+
+        if vim.list_contains(installed, lang) then
+            vim.treesitter.start(args.buf)
+        end
+    end,
+})
+
 -- Treesitter Textobjects
 local map = vim.keymap.set
 
