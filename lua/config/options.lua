@@ -80,7 +80,27 @@ opt.fillchars = {
 opt.completeopt = { "menu", "menuone", "noselect", "fuzzy" }
 
 -- Built-in statusline (replaces lualine.nvim)
-opt.statusline = " %f %h%m%r %= %{FugitiveHead() ==# '' ? '' : ' ' . FugitiveHead()} │ %{&filetype} │ %l:%c │ %P "
+_G.nvim_statusline_git_info = function()
+    local ok, branch = pcall(vim.fn.FugitiveHead)
+    if not ok or branch == "" then
+        return ""
+    end
+
+    local parts = {}
+    local has_changes, changes = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
+    if has_changes and type(changes) == "table" then
+        parts[#parts + 1] = string.format(
+            "+%s ~%s -%s",
+            tostring(changes.added or 0),
+            tostring(changes.changed or 0),
+            tostring(changes.removed or 0)
+        )
+    end
+
+    return " " .. branch .. (#parts > 0 and " │ " .. table.concat(parts, " │ ") or "") .. " │ "
+end
+
+opt.statusline = " %f%h%m%r%=%{v:lua.nvim_statusline_git_info()}%{&filetype} │ %l:%c │ %P "
 
 -- Netrw configuration (replaces neo-tree)
 vim.g.netrw_liststyle = 3 -- Tree view

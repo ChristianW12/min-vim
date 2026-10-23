@@ -170,7 +170,7 @@ end, { desc = "Insert Mail Contacts" })
 -- =========================
 map("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git Status" })
 map("n", "<leader>gc", "<cmd>Git commit<cr>", { desc = "Git Commit" })
-map("n", "<leader>gca", "<cmd>Git commit --amend<cr>", { desc = "Git Commit Amend" })
+map("n", "<leader>gac", "<cmd>Git commit --amend<cr>", { desc = "Git Commit Amend" })
 map("n", "<leader>gP", "<cmd>Git push<cr>", { desc = "Git Push" })
 map("n", "<leader>gp", "<cmd>Git pull<cr>", { desc = "Git Pull" })
 map("n", "<leader>gm", function()

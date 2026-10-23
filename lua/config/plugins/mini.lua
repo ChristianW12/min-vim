@@ -48,11 +48,11 @@ require("mini.surround").setup({})
 
 require("mini.map").setup({})
 
-require("mini.notify").setup({
-    lsp_progress = {
-        enable = false,
-    },
-})
+-- require("mini.notify").setup({
+--     lsp_progress = {
+--         enable = false,
+--     },
+-- })
 
 require("mini.pairs").setup({})
 
