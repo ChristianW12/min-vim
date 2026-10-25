@@ -97,15 +97,15 @@ require("live-preview").setup({})
 --
 -- map({ "n", "v" }, "<leader>kp", function()
 --     require("knap").toggle_autorun()
--- end, { desc = "KNAP: Live-Vorschau umschalten" })
+-- end, { desc = "KNAP: Toggle live preview" })
 --
 -- map({ "n", "v" }, "<leader>kc", function()
 --     require("knap").close_viewer()
--- end, { desc = "KNAP: Vorschau schließen" })
+-- end, { desc = "KNAP: Close preview" })
 --
 -- map({ "n", "v" }, "<leader>kf", function()
 --     require("knap").forward_jump()
--- end, { desc = "KNAP: Vorwärtssuche" })
+-- end, { desc = "KNAP: Forward search" })
 
 -- VimTeX (only for PA/PA2/BA folders)
 local folder = vim.fs.basename(vim.fn.getcwd())

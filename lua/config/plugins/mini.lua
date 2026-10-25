@@ -1,4 +1,3 @@
-
 require("mini.tabline").setup({})
 
 -- Dynamically adapt colors to the active theme

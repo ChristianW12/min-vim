@@ -3,10 +3,10 @@ if not has_lazydev then
     return
 end
 
--- lazydev konfiguriert lua_ls dynamisch für Neovim-Konfigurationen und Plugins
+-- lazydev dynamically configures lua_ls for Neovim configs and plugins
 lazydev.setup({
     library = {
-        -- Lädt luvit-Typen, wenn vim.uv verwendet wird
+        -- Loads luvit types when vim.uv is used
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
     },
 })

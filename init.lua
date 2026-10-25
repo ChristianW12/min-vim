@@ -35,6 +35,7 @@ vim.pack.add({
     "https://github.com/kevinhwang91/nvim-hlslens",
     "https://github.com/freeo/md-table.nvim",
     "https://github.com/hat0uma/csvview.nvim",
+    "https://github.com/goolord/alpha-nvim",
 
     -- AI
     "https://github.com/github/copilot.vim",
@@ -94,6 +95,6 @@ local local_options = vim.fs.joinpath(vim.fn.stdpath("config"), "local_options.l
 if vim.uv.fs_stat(local_options) then
     local ok, err = pcall(dofile, local_options)
     if not ok then
-        vim.notify("Fehler beim Laden von local_options.lua: " .. tostring(err), vim.log.levels.WARN)
+        vim.notify("Error loading local_options.lua: " .. tostring(err), vim.log.levels.WARN)
     end
 end
