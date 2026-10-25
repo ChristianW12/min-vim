@@ -2,32 +2,37 @@
 require("nvim-treesitter.install").prefer_git = true
 require("nvim-treesitter.install").compilers = { "gcc" }
 
-require("nvim-treesitter").setup({
-    ensure_installed = {
-        "c", "lua", "python", "javascript", "typescript", "html", "css",
-        "sql", "angular", "xml", "vim", "bash", "markdown", "java",
-        "vimdoc", "query", "markdown_inline",
-    },
-    sync_install = false,
-    auto_install = true,
-    highlight = {
-        enable = true,
-        disable = function(_, buf)
-            local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > 256 * 1024 then return true end
-        end,
-    },
-    indent = {
-        enable = true,
-    },
-})
+local ts = require("nvim-treesitter")
+ts.setup({})
+
+local ensure_installed = {
+    "c", "lua", "python", "javascript", "typescript", "html", "css",
+    "sql", "angular", "xml", "vim", "bash", "markdown", "java",
+    "vimdoc", "query", "markdown_inline",
+}
+
+-- Automatically install missing parsers
+local installed_parsers = ts.get_installed("parsers")
+local missing_parsers = vim.tbl_filter(function(lang)
+    return not vim.list_contains(installed_parsers, lang)
+end, ensure_installed)
+
+if #missing_parsers > 0 then
+    ts.install(missing_parsers)
+end
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
     callback = function(args)
+
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+        if ok and stats and stats.size > 1024 * 1024 then
+            return
+        end
+
         local filetype = vim.bo[args.buf].filetype
         local lang = vim.treesitter.language.get_lang(filetype) or filetype
-        local installed = require("nvim-treesitter").get_installed("parsers")
+        local installed = ts.get_installed("parsers")
 
         if vim.list_contains(installed, lang) then
             vim.treesitter.start(args.buf)
