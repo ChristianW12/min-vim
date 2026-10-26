@@ -32,10 +32,6 @@
       "rev": "cf5174f47dc1fe5dcc3725b2951d6b4221121f82",
       "src": "https://github.com/Kyytox/data-explorer.nvim"
     },
-    "diffview.nvim": {
-      "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
-      "src": "https://github.com/sindrets/diffview.nvim"
-    },
     "gitsigns.nvim": {
       "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
