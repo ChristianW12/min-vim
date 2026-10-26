@@ -41,6 +41,8 @@ require("blink.cmp").setup({
             },
         },
         per_filetype = {
+            sql = { "lsp", "path", "snippets", "buffer" },
+            mysql = { "lsp", "path", "snippets", "buffer" },
             tex = { "lsp", "omni", "path", "snippets", "buffer" },
             plaintex = { "lsp", "omni", "path", "snippets", "buffer" },
             markdown = { "lsp", "omni", "path", "snippets", "buffer" },

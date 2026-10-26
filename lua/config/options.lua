@@ -1,7 +1,20 @@
 local opt = vim.opt
 
 -- Colorscheme
-vim.cmd.colorscheme("onedark") -- Set colorscheme
+vim.cmd.colorscheme("onedark")
+
+vim.api.nvim_create_autocmd("OptionSet", {
+    group = vim.api.nvim_create_augroup("OneDarkBackground", { clear = true }),
+    pattern = "background",
+    callback = function()
+        if vim.g.colors_name ~= "onedark" then
+            return
+        end
+
+        require("onedark").setup({ style = vim.o.background })
+        vim.cmd.colorscheme("onedark")
+    end,
+})
 
 -- Basics / UI
 opt.termguicolors = true
