@@ -45,7 +45,6 @@ vim.pack.add({
     "https://github.com/MeanderingProgrammer/render-markdown.nvim",
     "https://github.com/brianhuster/live-preview.nvim", 
     "https://github.com/nvim-telescope/telescope-bibtex.nvim",
-    -- "https://github.com/frabjous/knap",
     "https://github.com/hedyhli/outline.nvim",
 
     -- Language-specific

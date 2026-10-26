@@ -85,28 +85,6 @@ vim.api.nvim_create_autocmd("FileType", {
 -- vim.g.mkdp_auto_start = 0
 require("live-preview").setup({})
 
--- -- KNAP
--- vim.g.knap_settings = {
---     texoutputext = "pdf",
---     textopdf = "pdflatex -interaction=nonstopmode -synctex=1 %docroot%",
---     textopdfviewerlaunch = "firefox %outputfile%",
---     textopdfviewerrefresh = "none",
--- }
---
--- local map = vim.keymap.set
---
--- map({ "n", "v" }, "<leader>kp", function()
---     require("knap").toggle_autorun()
--- end, { desc = "KNAP: Toggle live preview" })
---
--- map({ "n", "v" }, "<leader>kc", function()
---     require("knap").close_viewer()
--- end, { desc = "KNAP: Close preview" })
---
--- map({ "n", "v" }, "<leader>kf", function()
---     require("knap").forward_jump()
--- end, { desc = "KNAP: Forward search" })
-
 -- VimTeX (only for PA/PA2/BA folders)
 local folder = vim.fs.basename(vim.fn.getcwd())
 if folder == "PA" or folder == "PA2" or folder == "BA" then
