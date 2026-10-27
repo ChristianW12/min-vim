@@ -191,6 +191,21 @@ map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 map("n", "<leader>lf", "<cmd>LazyGitCurrentFile<cr>", { desc = "LazyGit Current File" })
 
 -- =========================
+-- Diffview Keymaps
+-- =========================
+map("n", "<leader>gv", function()
+    local lib = package.loaded["diffview.lib"]
+    if lib and lib.get_current_view() then
+        vim.cmd("DiffviewClose")
+    else
+        vim.cmd("DiffviewOpen")
+    end
+end, { desc = "Toggle Diffview (Working Tree)" })
+-- map("n", "<leader>gvc", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
+map("n", "<leader>ghh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview File History (Current File)" })
+map("n", "<leader>ghH", "<cmd>DiffviewFileHistory<cr>", { desc = "Diffview Branch/Repo History" })
+
+-- =========================
 -- Todo-Comments Keymaps
 -- =========================
 map("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Todos: all keywords" })

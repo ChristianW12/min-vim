@@ -41,10 +41,11 @@ require("blink.cmp").setup({
             },
         },
         per_filetype = {
+            gitignore = { "lsp", "path", "snippets", "buffer" },
             sql = { "lsp", "path", "snippets", "buffer" },
             mysql = { "lsp", "path", "snippets", "buffer" },
-            tex = { "lsp", "omni", "path", "snippets", "buffer" },
-            plaintex = { "lsp", "omni", "path", "snippets", "buffer" },
+            tex = { "lsp", "omni", "path", "snippets", "buffer", "spell" },
+            plaintex = { "lsp", "omni", "path", "snippets", "buffer", "spell" },
             markdown = { "lsp", "omni", "path", "snippets", "buffer" },
         },
     },

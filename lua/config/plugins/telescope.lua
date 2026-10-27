@@ -47,3 +47,40 @@ vim.api.nvim_create_autocmd("User", {
 pcall(function()
     require("telescope").load_extension("bibtex")
 end)
+
+-- Search git commits and copy selected commit hash to system clipboard
+local function copy_git_commit()
+    local builtin = require("telescope.builtin")
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+
+    builtin.git_commits({
+        prompt_title = "Git Commits (Enter copies hash)",
+        attach_mappings = function(prompt_bufnr, map)
+            local function copy_hash()
+                local selection = action_state.get_selected_entry()
+                actions.close(prompt_bufnr)
+                if selection and selection.value then
+                    vim.fn.setreg("+", selection.value)
+                    vim.notify("Commit hash copied: " .. selection.value, vim.log.levels.INFO)
+                end
+            end
+
+            -- Enter in insert and normal mode copies the commit hash
+            map("i", "<CR>", copy_hash)
+            map("n", "<CR>", copy_hash)
+            -- 'y' in normal mode as intuitive vim alternative
+            map("n", "y", copy_hash)
+
+            return true
+        end,
+    })
+end
+
+vim.api.nvim_create_user_command("CopyGitCommit", copy_git_commit, {
+    desc = "Search git commits and copy selected hash to clipboard",
+})
+
+return {
+    copy_git_commit = copy_git_commit,
+}
