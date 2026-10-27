@@ -103,26 +103,53 @@ opt.completeopt = { "menu", "menuone", "noselect", "fuzzy" }
 
 -- Built-in statusline (replaces lualine.nvim)
 _G.nvim_statusline_git_info = function()
+    local errors, warnings = 0, 0
+    for _, diagnostic in ipairs(vim.diagnostic.get(0)) do
+        if diagnostic.severity == vim.diagnostic.severity.ERROR then
+            errors = errors + 1
+        elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+            warnings = warnings + 1
+        end
+    end
+    local parts = {}
+    if errors > 0 then
+        parts[#parts + 1] = "E:" .. errors
+    end
+    if warnings > 0 then
+        parts[#parts + 1] = "W:" .. warnings
+    end
+
     local ok, branch = pcall(vim.fn.FugitiveHead)
-    if not ok or branch == "" then
+    if ok and branch ~= "" then
+        local git_parts = {}
+        local has_changes, changes = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
+        if has_changes and type(changes) == "table" then
+            git_parts[#git_parts + 1] = string.format(
+                "+%s ~%s -%s",
+                tostring(changes.added or 0),
+                tostring(changes.changed or 0),
+                tostring(changes.removed or 0)
+            )
+        end
+
+        parts[#parts + 1] = " " .. branch .. (#git_parts > 0 and " │ " .. table.concat(git_parts, " │ ") or "")
+    end
+
+    if #parts == 0 then
         return ""
     end
 
-    local parts = {}
-    local has_changes, changes = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
-    if has_changes and type(changes) == "table" then
-        parts[#parts + 1] = string.format(
-            "+%s ~%s -%s",
-            tostring(changes.added or 0),
-            tostring(changes.changed or 0),
-            tostring(changes.removed or 0)
-        )
-    end
-
-    return " " .. branch .. (#parts > 0 and " │ " .. table.concat(parts, " │ ") or "") .. " │ "
+    return table.concat(parts, " │ ") .. " │ "
 end
 
 opt.statusline = " %f%h%m%r%=%{v:lua.nvim_statusline_git_info()}%{&filetype} │ %l:%c │ %P "
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+    group = vim.api.nvim_create_augroup("StatuslineDiagnostics", { clear = true }),
+    callback = function()
+        vim.cmd("redrawstatus")
+    end,
+})
 
 -- Netrw configuration (replaces neo-tree)
 vim.g.netrw_liststyle = 3 -- Tree view
