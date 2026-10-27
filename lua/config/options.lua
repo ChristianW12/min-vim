@@ -29,6 +29,15 @@ opt.inccommand = "split"
 opt.termguicolors = true
 opt.winborder = "rounded"
 
+-- resize quickfix list to 15 lines when opened
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    callback = function()
+        if vim.bo.filetype == "qf" then
+            vim.cmd("resize 15")
+        end
+    end,
+})
+
 -- Preserve context while scrolling
 opt.scroll = 5
 opt.scrolloff = 8

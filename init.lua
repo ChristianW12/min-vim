@@ -36,6 +36,7 @@ vim.pack.add({
     "https://github.com/freeo/md-table.nvim",
     "https://github.com/hat0uma/csvview.nvim",
     "https://github.com/goolord/alpha-nvim",
+    "https://github.com/stevearc/quicker.nvim",
 
     -- AI
     "https://github.com/github/copilot.vim",

@@ -28,12 +28,6 @@ map("n", "ü", "10zh", { desc = "Scroll left and center cursor" })
 -- Search
 map("n", "<ESC>", ":nohl<CR>", { desc = "Remove search highlight", silent = true })
 
--- Save/close files
--- map("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
--- map("n", "<leader>W", ":wa<CR>", { desc = "Save all files", silent = true })
--- map("n", "<leader>q", ":confirm q<CR>", { desc = "Quit Neovim", silent = true })
--- map("n", "<leader>Q", ":qall!<CR>", { desc = "Force quit Neovim", silent = true })
-
 -- Copy colorscheme to clipboard
 map("n", "<leader>cth", function()
     local name = vim.g.colors_name or vim.cmd("colorscheme")
