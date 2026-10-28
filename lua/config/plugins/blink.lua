@@ -32,7 +32,7 @@ require("blink.cmp").setup({
         },
     },
     sources = {
-        default = { "lazydev", "lsp", "omni", "path", "snippets", "buffer" },
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
         providers = {
             lazydev = {
                 name = "LazyDev",
@@ -44,8 +44,8 @@ require("blink.cmp").setup({
             gitignore = { "lsp", "path", "snippets", "buffer" },
             sql = { "lsp", "path", "snippets", "buffer" },
             mysql = { "lsp", "path", "snippets", "buffer" },
-            tex = { "lsp", "omni", "path", "snippets", "buffer", "spell" },
-            plaintex = { "lsp", "omni", "path", "snippets", "buffer", "spell" },
+            tex = { "lsp", "omni", "path", "snippets", "buffer"},
+            plaintex = { "lsp", "omni", "path", "snippets", "buffer"},
             markdown = { "lsp", "omni", "path", "snippets", "buffer" },
         },
     },
