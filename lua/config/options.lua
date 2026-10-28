@@ -47,9 +47,17 @@ opt.sidescrolloff = 8
 opt.splitright = true
 opt.splitbelow = true
 
--- Spell Checking
-opt.spell = true
+-- Spell checking (configured per filetype to optimize startup time)
+opt.spell = false
 opt.spelllang = { "de", "en_us" }
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("SpellChecking", { clear = true }),
+    pattern = { "markdown", "text", "gitcommit" },
+    callback = function()
+        vim.opt_local.spell = true
+    end,
+})
 
 -- Indentation
 opt.expandtab = true
@@ -67,7 +75,9 @@ opt.path:append("**") -- Search across projects with :find
 -- Files / Undo / Backup (cross-platform)
 opt.undofile = true
 local undodir = vim.fs.joinpath(vim.fn.expand("~"), ".vim", "undodir")
-vim.fn.mkdir(undodir, "p")
+if vim.fn.isdirectory(undodir) == 0 then
+    vim.fn.mkdir(undodir, "p")
+end
 opt.undodir = undodir
 opt.swapfile = false
 opt.backup = false

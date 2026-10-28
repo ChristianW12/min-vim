@@ -47,12 +47,6 @@ require("mini.surround").setup({})
 
 require("mini.map").setup({})
 
--- require("mini.notify").setup({
---     lsp_progress = {
---         enable = false,
---     },
--- })
-
 require("mini.pairs").setup({})
 
 require("mini.splitjoin").setup({})
@@ -79,12 +73,6 @@ require("mini.indentscope").setup({
         animation = require("mini.indentscope").gen_animation.none(),
     },
 })
-
--- require("mini.cursorword").setup({
---     delay = 100,
---     -- Highlight only on the cursor word
---     modes = { "n", "v" },
--- })
 
 require("mini.jump2d").setup({})
 

@@ -223,10 +223,20 @@ if is_win then
 end
 
 -- ============================================================================
--- Mason Setup & automatic package installation
+-- Mason setup & automatic package installation (deferred after startup)
 -- ============================================================================
-local has_mason, mason = pcall(require, "mason")
-if has_mason then
+-- Add Mason bin directory directly to PATH so installed servers are found
+local mason_bin = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin")
+if vim.fn.isdirectory(mason_bin) == 1 and not string.find(vim.env.PATH, mason_bin, 1, true) then
+    vim.env.PATH = mason_bin .. (is_win and ";" or ":") .. vim.env.PATH
+end
+
+local function setup_mason_and_packages()
+    local has_mason, mason = pcall(require, "mason")
+    if not has_mason then
+        return
+    end
+
     mason.setup({
         ui = {
             border = "rounded",
@@ -272,6 +282,9 @@ if has_mason then
         end)
     end
 end
+
+-- Run package check 1.5 seconds after startup to avoid blocking
+vim.defer_fn(setup_mason_and_packages, 1500)
 
 -- Retrieve capabilities for blink.cmp
 local has_blink, blink = pcall(require, "blink.cmp")

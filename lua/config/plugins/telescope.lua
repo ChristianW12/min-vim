@@ -43,10 +43,16 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 
--- BibTeX Extension
-pcall(function()
-    require("telescope").load_extension("bibtex")
-end)
+-- Lazy load BibTeX extension for TeX/Bib filetypes
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "tex", "plaintex", "bib" },
+    once = true,
+    callback = function()
+        pcall(function()
+            require("telescope").load_extension("bibtex")
+        end)
+    end,
+})
 
 -- Search git commits and copy selected commit hash to system clipboard
 local function copy_git_commit()

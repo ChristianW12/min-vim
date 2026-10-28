@@ -173,5 +173,5 @@ dashboard.opts.layout = {
 dashboard.section.buttons.val = {}
 dashboard.section.footer.val = ""
 
-alpha.setup(dashboard.opts)
-vim.b.miniindentscope_disable = true
+-- alpha.setup(dashboard.opts)
+-- vim.b.miniindentscope_disable = true

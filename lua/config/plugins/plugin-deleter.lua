@@ -1,11 +1,5 @@
 local M = {}
 
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local conf = require("telescope.config").values
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-
 --- Retrieves all installed plugins via vim.pack
 --- @return vim.pack.PlugData[]
 function M.get_installed_plugins()
@@ -19,6 +13,12 @@ M.Get_installed_plugins = M.get_installed_plugins
 --- Opens a Telescope picker to delete plugins
 --- @param opts? table Optional Telescope configuration options
 function M.delete_plugins_picker(opts)
+    local pickers = require("telescope.pickers")
+    local finders = require("telescope.finders")
+    local conf = require("telescope.config").values
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+
     opts = opts or {}
 
     local plugins = M.get_installed_plugins()

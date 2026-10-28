@@ -7,72 +7,84 @@ local function get_obsidian_vault()
     return nil
 end
 
-local vault_path = get_obsidian_vault()
-local workspaces = {}
+local obsidian_initialized = false
+local function setup_obsidian()
+    if obsidian_initialized then return end
 
-if vault_path then
-    table.insert(workspaces, {
-        name = "vault",
-        path = vault_path,
+    local vault_path = get_obsidian_vault()
+    local workspaces = {}
+
+    if vault_path then
+        table.insert(workspaces, {
+            name = "vault",
+            path = vault_path,
+        })
+    else
+        table.insert(workspaces, {
+            name = "no-vault",
+            path = function()
+                local cwd = vim.uv.cwd()
+                if not cwd then return vim.fn.expand("~") end
+                local buf_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+                if buf_dir == nil or buf_dir == "" or buf_dir == "." then
+                    return cwd
+                end
+                return buf_dir
+            end,
+            overrides = {
+                notes_subdir = vim.NIL,
+                new_notes_location = "current_dir",
+                templates = { folder = vim.NIL },
+                disable_frontmatter = true,
+            }
+        })
+    end
+
+    local ok, obsidian = pcall(require, "obsidian")
+    if not ok then return end
+
+    obsidian.setup({
+        workspaces = workspaces,
+        completion = {
+            nvim_cmp = false,
+            min_chars = 2,
+        },
+        notes_subdir = "",
+        new_notes_location = "notes_subdir",
+        disable_frontmatter = true,
+        mappings = {
+            ["gf"] = {
+                action = function()
+                    return require("obsidian").util.gf_passthrough()
+                end,
+                opts = { noremap = false, expr = true, buffer = true },
+            },
+            ["<C-g>"] = {
+                action = function()
+                    return require("obsidian").util.toggle_checkbox()
+                end,
+                opts = { buffer = true },
+            },
+        },
+        ui = {
+            enable = false,
+            update_debounce = 200,
+            checkboxes = {
+                [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+                ["x"] = { char = "", hl_group = "ObsidianDone" },
+            },
+        },
     })
-else
-    table.insert(workspaces, {
-        name = "no-vault",
-        path = function()
-            local cwd = vim.uv.cwd()
-            if not cwd then return vim.fn.expand("~") end
-            local buf_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
-            if buf_dir == nil or buf_dir == "" or buf_dir == "." then
-                return cwd
-            end
-            return buf_dir
-        end,
-        overrides = {
-            notes_subdir = vim.NIL,
-            new_notes_location = "current_dir",
-            templates = { folder = vim.NIL },
-            disable_frontmatter = true,
-        }
-    })
+    obsidian_initialized = true
 end
 
-require("obsidian").setup({
-    workspaces = workspaces,
-    completion = {
-        nvim_cmp = false,
-        min_chars = 2,
-    },
-    notes_subdir = "",
-    new_notes_location = "notes_subdir",
-    disable_frontmatter = true,
-    mappings = {
-        ["gf"] = {
-            action = function()
-                return require("obsidian").util.gf_passthrough()
-            end,
-            opts = { noremap = false, expr = true, buffer = true },
-        },
-        ["<C-g>"] = {
-            action = function()
-                return require("obsidian").util.toggle_checkbox()
-            end,
-            opts = { buffer = true },
-        },
-    },
-    ui = {
-        enable = false,
-        update_debounce = 200,
-        checkboxes = {
-            [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-            ["x"] = { char = "", hl_group = "ObsidianDone" },
-        },
-    },
-})
-
--- Markdown shortcuts (buffer-local for Markdown)
+-- Markdown shortcuts & lazy setup for Obsidian + Live-Preview
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
+        setup_obsidian()
+        pcall(function() require("live-preview").setup({}) end)
+
         vim.keymap.set("i", "<C-b>", "****<Left><Left>", { desc = "Markdown: Bold", buffer = true })
         vim.keymap.set("i", "<C-u>", "____<Left><Left>", { desc = "Markdown: Underline/Italic", buffer = true })
         vim.keymap.set("i", "<C-g>", function()
@@ -81,9 +93,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Markdown Preview
--- vim.g.mkdp_auto_start = 0
-require("live-preview").setup({})
+-- If Neovim is opened directly inside an Obsidian vault
+if get_obsidian_vault() then
+    setup_obsidian()
+end
 
 -- VimTeX (only for PA/PA2/BA folders)
 local folder = vim.fs.basename(vim.fn.getcwd())

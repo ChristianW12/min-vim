@@ -9,18 +9,6 @@ map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
 map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer", silent = true })
 map("n", "<leader>bD", ":bd!<CR>", { desc = "Force close buffer", silent = true })
 
--- Scroll and center cursor
--- map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center cursor" })
--- map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center cursor" })
-
--- Wrap-aware movement
--- map("n", "j", function()
---     return vim.v.count == 0 and "gj" or "j"
--- end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
--- map("n", "k", function()
---     return vim.v.count == 0 and "gk" or "k"
--- end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
-
 -- Horizontal scrolling
 map("n", "+", "10zl", { desc = "Scroll right and center cursor" })
 map("n", "ü", "10zh", { desc = "Scroll left and center cursor" })
@@ -35,21 +23,9 @@ map("n", "<leader>cth", function()
     print("Theme '" .. name .. "' copied to clipboard!")
 end, { desc = "Copy current colorscheme name to clipboard" })
 
--- deactivate since it's replaced by mini.move
--- Move lines (Normal mode)
--- map("n", "<A-j>", ":m .+1<CR>==", { desc = "line down" })
--- map("n", "<A-k>", ":m .-2<CR>==", { desc = "line up" })
--- -- Move lines (Visual mode)
--- map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected lines down" })
--- map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected lines up" })
-
-
 -- =========================
 -- Explorer 
 -- =========================
--- map("n", "<leader>e", ":Lexplore<CR>", { desc = "Toggle Explorer", silent = true })
--- map("n", "<leader>fe", ":Lexplore<CR>", { desc = "Focus Explorer", silent = true })
--- map("n", "<leader>E", ":Lexplore<CR>", { desc = "Toggle file explorer", silent = true })
 map("n", "<leader>e", function()
     vim.cmd("Neotree toggle filesystem reveal left")
 end, { desc = "Toggle Explorer", silent = true })
@@ -82,9 +58,6 @@ map("n", "<leader>TH", "<cmd>Telescope colorscheme enable_preview=true<cr>", { d
 
 -- Git Telescope Pickers
 map("n", "<leader>ghc", "<cmd>Telescope git_commits<cr>", { desc = "Git Commits" })
--- map("n", "<leader>ghs", "<cmd>Telescope git_status<cr>", { desc = "Git Status (Telescope)" })
--- Bap("n", "<leader>ghB", "<cmd>Telescope git_branches<cr>", { desc = "Git Branches" })
--- map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Git Files" })
 
 -- Open file externally (cross-platform)
 map("n", "<leader>oe", function()
@@ -113,10 +86,6 @@ map("n", "<leader>oe", function()
         end,
     })
 end, { desc = "Search and Open File Externally" })
-
--- -- Buffer selection (replaces Bufferline keymaps) Not currently in use
--- map("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Select buffer" })
--- map("n", "<leader>bc", ":bd<CR>", { desc = "Close buffer", silent = true })
 
 -- =========================
 -- Mail Contacts (Telescope Custom Picker) NOTE: currently not in use since im not using aerc as an email client
@@ -201,7 +170,6 @@ map("n", "<leader>gv", function()
         vim.cmd("DiffviewOpen")
     end
 end, { desc = "Toggle Diffview (Working Tree)" })
--- map("n", "<leader>gvc", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
 map("n", "<leader>ghh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview File History (Current File)" })
 map("n", "<leader>ghH", "<cmd>DiffviewFileHistory<cr>", { desc = "Diffview Branch/Repo History" })
 
@@ -219,17 +187,6 @@ map("n", "<leader>u", function()
     vim.notify("Undotree: Toggled", vim.log.levels.INFO)
 end, { desc = "Undo Tree Toggle" })
 map("n", "<leader>uf", "<cmd>UndotreeFocus<CR>", { desc = "Undo Tree Focus" })
-
--- =========================
--- Copilot Keymaps
--- =========================
--- (set in config/plugins.lua after plugin setup)
-
--- =========================
--- Markdown Preview [DISABLED 
--- =========================
--- map("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true, desc = "Preview of current file in Browser" })
--- map("n", "<leader>mps", ":MarkdownPreviewStop<CR>", { noremap = true, silent = true, desc = "Stop Markdown Preview" })
 
 -- =========================
 -- Obsidian Keymaps (Global triggers)

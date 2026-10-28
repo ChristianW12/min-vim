@@ -21,49 +21,62 @@ wk.add({
     { "<leader>s", group = "Session / Search" },
 })
 
-require("csvview").setup({
-    parser = {
-        comments = { "#", "//" },
-        -- The `ft` mapping (csv -> ",") takes priority over auto-detection,
-        -- which forces a comma delimiter even for semicolon-separated files.
-        -- Leaving `ft` empty makes csvview fall back to auto-detection, which
-        -- already tries ";" among other delimiters and picks the best match.
-        delimiter = {
-            ft = {},
-            fallbacks = { ";", ",", "\t", "|", ":", " " },
-        },
-    },
-    view = {
-        -- "border" draws visible column separators, making the table clearly
-        -- recognizable (the default "highlight" mode only colors the delimiter).
-        display_mode = "border",
-    },
-    keymaps = {
-        textobject_field_inner = { "if", mode = { "o", "x" } },
-        textobject_field_outer = { "af", mode = { "o", "x" } },
-        jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
-        jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
-        jump_next_row = { "<Enter>", mode = { "n", "v" } },
-        jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
-    },
-})
+local csvview_initialized = false
+local function get_csvview()
+    local csvview = require("csvview")
+    if not csvview_initialized then
+        csvview.setup({
+            parser = {
+                comments = { "#", "//" },
+                delimiter = {
+                    ft = {},
+                    fallbacks = { ";", ",", "\t", "|", ":", " " },
+                },
+            },
+            view = {
+                display_mode = "border",
+            },
+            keymaps = {
+                textobject_field_inner = { "if", mode = { "o", "x" } },
+                textobject_field_outer = { "af", mode = { "o", "x" } },
+                jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
+                jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
+                jump_next_row = { "<Enter>", mode = { "n", "v" } },
+                jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
+            },
+        })
+        csvview_initialized = true
+    end
+    return csvview
+end
 
 vim.keymap.set("n", "<leader>tc", function()
-    require("csvview").toggle()
-    if require("csvview").is_enabled() then
+    local csvview = get_csvview()
+    csvview.toggle()
+    if csvview.is_enabled() then
         vim.notify("CSV View: ON", vim.log.levels.INFO)
     else
         vim.notify("CSV View: OFF", vim.log.levels.WARN)
     end
 end, { desc = "Toggle CSV View" })
 
--- Outline.nvim
-require("outline").setup({
-    width = 50,
-})
+-- Outline.nvim (Lazy loaded)
+local outline_initialized = false
+local function get_outline()
+    local outline = require("outline")
+    if not outline_initialized then
+        outline.setup({
+            width = 50,
+        })
+        outline_initialized = true
+    end
+    return outline
+end
+
 vim.keymap.set("n", "<leader>to", function()
-    require("outline").toggle()
-    if require("outline").is_open() then
+    local outline = get_outline()
+    outline.toggle()
+    if outline.is_open() then
         vim.notify("Outline: ON", vim.log.levels.INFO)
     else
         vim.notify("Outline: OFF", vim.log.levels.WARN)

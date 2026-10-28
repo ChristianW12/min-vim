@@ -1,5 +1,4 @@
 
--- local activeOnEnter = true
 local activeOnEnter = false
 
 require("neo-tree").setup({
