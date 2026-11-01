@@ -78,12 +78,19 @@ local function setup_obsidian()
     obsidian_initialized = true
 end
 
--- Markdown shortcuts & lazy setup for Obsidian + Live-Preview
+-- Live-Preview Konfiguration: dynamic_root erlaubt die Vorschau auch außerhalb des aktuellen Arbeitsverzeichnisses
+local ok_lp, livepreview_config = pcall(require, "livepreview.config")
+if ok_lp then
+    livepreview_config.set({
+        dynamic_root = true,
+    })
+end
+
+-- Markdown shortcuts & lazy setup für Obsidian
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         setup_obsidian()
-        pcall(function() require("live-preview").setup({}) end)
 
         vim.keymap.set("i", "<C-b>", "****<Left><Left>", { desc = "Markdown: Bold", buffer = true })
         vim.keymap.set("i", "<C-u>", "____<Left><Left>", { desc = "Markdown: Underline/Italic", buffer = true })
