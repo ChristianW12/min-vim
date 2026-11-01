@@ -53,7 +53,7 @@ opt.spelllang = { "de", "en_us" }
 
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("SpellChecking", { clear = true }),
-    pattern = { "markdown", "text", "gitcommit" },
+    pattern = { "markdown", "text", "gitcommit", "tex", "plaintex" },
     callback = function()
         vim.opt_local.spell = true
     end,

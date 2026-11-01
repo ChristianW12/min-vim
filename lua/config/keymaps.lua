@@ -67,21 +67,34 @@ map("n", "<leader>oe", function()
     require("telescope.builtin").find_files({
         prompt_title = "Open File Externally",
         attach_mappings = function(prompt_bufnr, _)
-            local function open_externally()
+            actions.select_default:replace(function()
                 local selection = action_state.get_selected_entry()
-                if selection ~= nil then
-                    actions.close(prompt_bufnr)
-                    local file_path = selection.path or selection[1]
-                    local full_path = vim.fn.fnamemodify(file_path, ":p")
-                    if vim.ui.open then
-                        vim.ui.open(full_path)
-                    else
-                        vim.fn.jobstart({ "explorer.exe", full_path }, { detach = true })
+                actions.close(prompt_bufnr)
+
+                if not selection then
+                    return
+                end
+
+                local file_path = selection.path or selection.filename or selection.value or selection[1]
+                local full_path = vim.fs.normalize(vim.fn.fnamemodify(file_path, ":p"))
+
+                if vim.ui.open then
+                    local _, err = vim.ui.open(full_path)
+                    if not err then
+                        return
                     end
                 end
-            end
-            map("i", "<CR>", open_externally)
-            map("n", "<CR>", open_externally)
+
+                if vim.fn.has("win32") == 1 then
+                    vim.fn.jobstart({ "cmd.exe", "/c", "start", "", full_path }, { detach = true })
+                elseif vim.fn.has("mac") == 1 then
+                    vim.fn.jobstart({ "open", full_path }, { detach = true })
+                elseif vim.fn.executable("wslview") == 1 then
+                    vim.fn.jobstart({ "wslview", full_path }, { detach = true })
+                else
+                    vim.fn.jobstart({ "xdg-open", full_path }, { detach = true })
+                end
+            end)
             return true
         end,
     })
