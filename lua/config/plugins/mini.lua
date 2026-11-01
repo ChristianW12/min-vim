@@ -1,4 +1,4 @@
-require("mini.tabline").setup({})
+-- require("mini.tabline").setup({})
 
 -- Dynamically adapt colors to the active theme
 local function configure_tabline_colors()
