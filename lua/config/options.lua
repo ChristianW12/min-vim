@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 -- Preserve context while scrolling
-opt.scroll = 5
+-- opt.scroll = 5
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
