@@ -160,6 +160,10 @@
       "rev": "03ce1482222dc2bf1f781559508301f05382936d",
       "src": "https://github.com/hedyhli/outline.nvim"
     },
+    "pack-ui.nvim": {
+      "rev": "ba1684984424856a3df8dd62078915f2620b99da",
+      "src": "https://github.com/jtprogru/pack-ui.nvim"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"

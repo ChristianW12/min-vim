@@ -77,6 +77,7 @@ vim.pack.add({
     "https://github.com/navarasu/onedark.nvim",
     "https://github.com/mofiqul/vscode.nvim",
     "https://github.com/bluz71/vim-moonfly-colors",
+    "https://github.com/jtprogru/pack-ui.nvim",
 })
 
 require("config.options")

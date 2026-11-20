@@ -45,6 +45,8 @@ configure_tabline_colors()
 
 require("mini.surround").setup({})
 
+require("mini.ai").setup()
+
 require("mini.map").setup({})
 
 require("mini.pairs").setup({})
@@ -113,4 +115,3 @@ end, { desc = "Save/Update Session" })
 vim.keymap.set("n", "<leader>sd", function()
     require("mini.sessions").select("delete", { force = true })
 end, { desc = "Delete Session" })
-
