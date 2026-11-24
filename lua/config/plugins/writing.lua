@@ -105,18 +105,15 @@ if get_obsidian_vault() then
     setup_obsidian()
 end
 
--- VimTeX (only for PA/PA2/BA folders)
-local folder = vim.fs.basename(vim.fn.getcwd())
-if folder == "PA" or folder == "PA2" or folder == "BA" then
-    if vim.fn.has("win32") == 1 then
-        vim.g.vimtex_view_general_viewer = "SumatraPDF"
-        vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
-    elseif vim.fn.has("unix") == 1 then
-        vim.g.vimtex_view_method = "zathura"
-    end
-
-    vim.g.vimtex_quickfix_mode = 0
-    vim.g.vimtex_compiler_method = "latexmk"
-    vim.g.vimtex_view_automatic = 1
-    vim.g.vimtex_syntax_enabled = 1
+-- VimTeX
+if vim.fn.has("win32") == 1 then
+    vim.g.vimtex_view_general_viewer = "SumatraPDF"
+    vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+elseif vim.fn.has("unix") == 1 then
+    vim.g.vimtex_view_method = "zathura"
 end
+
+vim.g.vimtex_quickfix_mode = 0
+vim.g.vimtex_compiler_method = "latexmk"
+vim.g.vimtex_view_automatic = 1
+vim.g.vimtex_syntax_enabled = 1
