@@ -5,6 +5,7 @@ vim.g.maplocalleader = " "
 -- setting c compiler for windows 
 if vim.fn.has("win32") == 1 then
     vim.env.CC = "gcc"
+    vim.loader.enable()
 end
 
 vim.pack.add({
